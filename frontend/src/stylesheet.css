@@ -2432,21 +2432,18 @@ tr:hover {
     margin: 0; /* No margin needed */
 }
 
-
+/* 
 .footer {
     background-color:#3C5220;
     color: #fff;
     padding: 10px 0;
     width: 100vw;
 }
-  
+   */
 .footer-content {
     display: flex;
 }
 
-.footer h5 {
-    color: #fff;
-}
 
 .contact-list {
     list-style: none;

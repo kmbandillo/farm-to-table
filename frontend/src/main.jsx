@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
 import AdminRoot from './pages/AdminRoot';
 import CustomerRoot from './pages/CustomerRoot';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 import StorePage from './components/Customer/StorePage.jsx';
 import CustomerHome from './components/Customer/CustomerHome.jsx';
 import CustomerOrders from './components/Customer/CustomerOrders.jsx';
@@ -15,7 +15,7 @@ import AdminOrders from './components/Admin/AdminOrders.jsx';
 import AdminSales from './components/Admin/AdminSales.jsx';
 import CheckoutPage from './components/Customer/CheckoutPage.jsx';
 import './styles/index.css';
-// import './stylesheet.css';
+import './stylesheet.css';
 
 import ProfilePage from './components/Customer/ProfilePage.jsx';
 
@@ -76,8 +76,10 @@ const checkIfLoggedInOnCustomerPage = async () => {
 const router = createBrowserRouter([
   { path: '/', element: <SignIn />, loader: checkIfLoggedInOnHome},
   { path: '/signup', element: <SignUp />, loader: checkIfLoggedInOnHome},
+
   { path: '/customer', element: <CustomerRoot />, loader: checkIfLoggedInOnCustomerPage, children:[
     { path: '/customer', element: <CustomerHome />},
+
     { path: '/customer/storepage', element: <StorePage />},
     { path: '/customer/orders', element: <CustomerOrders />},
     { path: '/customer/checkout', element: <CheckoutPage />},
@@ -85,6 +87,7 @@ const router = createBrowserRouter([
   ]},
   { path: '/admin', element: <AdminRoot />, loader: checkIfLoggedInOnDash, children:[
     {path: '/admin', element: <AdminHome />},
+
     {path: '/admin/catalog', element: <AdminCatalog />},
     {path: '/admin/accounts', element: <AdminAccounts />},
     {path: '/admin/orders', element: <AdminOrders />},
