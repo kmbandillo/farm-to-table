@@ -1,0 +1,10 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.custom-class {
+  background-color: #f4f4f4;
+  font-size: 1.25rem;
+}
