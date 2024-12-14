@@ -2,11 +2,11 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="footer bg-[#75B27C] py-12 w-full">
+    <footer className="footer bg-[#75B27C] py-12 w-full h-[200px] p-10">
       <div className="container ">
-        <div className="footer-content">
-          <div className="about">
-            <h5 className='text-5xl font-bold font-sans'>Agrilink.</h5>
+        <div className="flex">
+          <div className="w-[85%]">
+            <h5 className='text-3xl font-extrabold font-sans'>AgriLink.</h5>
             <div className='linebreak bg-[#ffffff] w-96 h-1 my-4'></div>
             <p>1st, Physical Sciences Building, Harold Cuzner  <br />Royal Palm Ave, Los Baños, 4031 Laguna</p>
           </div>
@@ -18,8 +18,8 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="copyright text-center">
-          <p>Copyright &#169; 2024 Agrilink. All rights reserved.</p>
+        <div className="text-center">
+          <p>Copyright &#169; 2024 AgriLink. All rights reserved.</p>
         </div>
       </div>
     </footer>

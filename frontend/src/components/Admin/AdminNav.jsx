@@ -9,22 +9,22 @@ function AdminNav({ title, name, func }) {
 
     return (
         <header>
-            <div className="admin-nav-container">
-                <ul className="admin-nav-navtop-left">
-                    <li><img src={image} className="admin-nav-logo" alt="Logo" /></li>
-                    <li className="admin-nav-title">{title}</li>
+            <div className="flex bg-[#75B27C] m-auto">
+                <ul className="flex">
+                    <li><img src={image} className="size-[60px]" alt="Logo" /></li>
+                    <li className="m-auto font-bold">{title}</li>
                 </ul>
-                <ul className="admin-nav-navtop-center">
-                    <li><Link to="/admin" className={location.pathname === '/admin' ? 'active' : ''}>HOME</Link></li>
-                    <li><Link to="/admin/catalog" className={location.pathname === '/admin/catalog' ? 'active' : ''}>CATALOG</Link></li>
-                    <li><Link to="/admin/accounts" className={location.pathname === '/admin/accounts' ? 'active' : ''}>ACCOUNTS</Link></li>
-                    <li><Link to="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>ORDERS</Link></li>
-                    <li><Link to="/admin/sales" className={location.pathname === '/admin/sales' ? 'active' : ''}>SALES</Link></li>
+                <ul className="flex justify-evenly w-[60%] my-auto text-white">
+                    <li><Link to="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Home</Link></li>
+                    <li><Link to="/admin/catalog" className={location.pathname === '/admin/catalog' ? 'active' : ''}>Products</Link></li>
+                    <li><Link to="/admin/accounts" className={location.pathname === '/admin/accounts' ? 'active' : ''}>Users</Link></li>
+                    <li><Link to="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>Orders</Link></li>
+                    <li><Link to="/admin/sales" className={location.pathname === '/admin/sales' ? 'active' : ''}>Sales</Link></li>
                 </ul>
-                <ul className="admin-nav-navtop-right">
-                    <li className='logouticon' onClick={func}><i className="fas fa-sign-out-alt"></i></li>
-                    <li className='admin-nav-name'>{name}</li>
-                    <li><img src={profile} className="admin-nav-profile" alt="Profile" /></li>
+                <ul className="flex ml-[300px]">
+                    <li className='admin-nav-name m-auto mr-1'>{name}</li>
+                    <li><img src={profile} className="size-[50px] mt-1" alt="Profile" /></li>
+                    <li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt"></i></li>
                 </ul>
             </div>
         </header>
