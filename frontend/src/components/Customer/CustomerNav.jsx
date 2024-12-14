@@ -25,28 +25,28 @@ function CustomerNav({title, name, func}){
     return (
         <>
         <header>
-            <div className="customer-nav-container bg-[#75B27C] py-4">
-                <ul className="customer-nav-navtop-left">
-                    <li><img src={image} className="logo w-16 mx-6 "/></li>
-                    <li className="customer-nav-title text-4xl font-bold px-">{title}</li>
+            <div className="flex bg-[#75B27C] m-auto">
+                <ul className="flex">
+                    <li><img src={image} className="size-[60px]"/></li>
+                    <li className="m-auto font-bold">{title}</li>
                 </ul>
-                <ul className="customer-nav-navtop-center ">
-                    <li className='text' text-black-200><Link to="/customer" className={activeLink === 'home' ? 'active' : ''}>HOME</Link></li>
-                    <li><Link to="/customer/storepage" className={activeLink === 'storepage' ? 'active' : ''}>STORE</Link></li>
-                    <li><Link to="/customer/orders" className={activeLink === 'orders' ? 'active' : ''}>ORDERS</Link></li>
+                <ul className="flex justify-evenly w-[60%] my-auto text-white">
+                    <li className='text' text-black-200><Link to="/customer" className={activeLink === 'home' ? 'active' : ''}>Home</Link></li>
+                    <li><Link to="/customer/storepage" className={activeLink === 'storepage' ? 'active' : ''}>Store</Link></li>
+                    <li><Link to="/customer/orders" className={activeLink === 'orders' ? 'active' : ''}>Orders</Link></li>
                     {/* <li><Link to="/customer/about" className={activeLink === 'about' ? 'active' : ''}>ABOUT</Link></li> */}
                 </ul>
-                 <ul className="customer-nav-navtop-right">
-      <li className='logouticon' onClick={func}>
-        <i className="fas fa-sign-out-alt"></i>
-      </li>
-      <li className='customer-nav-name'>{name}</li>
-      <li>
-        <Link to="/customer/profile">
-          <img src={profile} className="customer-nav-profile" alt="Profile" />
-        </Link>
-      </li>
-    </ul>
+                 <ul className="flex ml-[300px]">
+                    <li className='admin-nav-name m-auto mr-1'>{name}</li>
+                    <li>
+                        <Link to="/customer/profile">
+                        <img src={profile} className="size-[50px] mt-1" alt="Profile" />
+                        </Link>
+                    </li>
+                    <li className='m-auto ml-1 p-3' onClick={func}>
+                        <i className="fas fa-sign-out-alt"></i>
+                    </li>
+                </ul>
             </div>
         </header>
         </>
