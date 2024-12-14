@@ -787,15 +787,7 @@ body {
     margin-top: 6px;
 }
 
-.customer-nav-container{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    background-color: #3C5220;
-    width: 100%;
-    margin-top: 0;
-    z-index: 9999;
-}
+
 
 .customer-nav-navtop-left{
     list-style-type: none;
@@ -815,13 +807,7 @@ body {
     padding-bottom: 2px;
 }
 
-.customer-nav-title{
-    padding-top: 15px;
-    padding-left: 15px;
-    font-size: 18px;
-    color: #FFB532;
-    font-weight: 600;
-}
+
 
 .customer-nav-navtop-right{
     list-style-type: none;

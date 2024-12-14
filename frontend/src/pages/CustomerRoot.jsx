@@ -30,7 +30,7 @@ function CustomerRoot() {
 
   return (
     <div>
-      <CustomerNav title="FieldFare" name={customerFirstName} func={handleLogout}/>
+      <CustomerNav title="Agrilink." name={customerFirstName} func={handleLogout}/>
       <Outlet firstName={customerFirstName} />
     </div>
   );

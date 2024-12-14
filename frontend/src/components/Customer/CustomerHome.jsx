@@ -44,7 +44,7 @@ function CustomerHome() {
                 <div className='customer-left'>
                     <ul className="customer-home-title">
                         <li><img src={image} className="customer-home-logo" /></li>
-                        <li className="customer-home-titletext">FieldFare</li>
+                        <li className="customer-home-titletext">Agrilink</li>
                     </ul>
                     <h2>A farm-to-table e-commerce platform <br />by the Department of Agriculture</h2>
                     <p>Your direct link to farm-fresh produce: bringing the harvest <br />straight to your doorstep!</p>
