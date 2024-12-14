@@ -34,7 +34,7 @@ function AdminRoot() {
 
   return (
     <div className='adminroot'>
-      <AdminNav title="FieldFare" name={adminFirstName} func={handleLogout}/>
+      <AdminNav title="AgriLink." name={adminFirstName} func={handleLogout}/>
       <Outlet firstName={adminFirstName} />
     </div>
   );
