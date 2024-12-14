@@ -71,40 +71,72 @@ export default function SignIn() {
   };
 
   return (
-    <div className='wholesignin'>
-    <MainHeader title="FieldFare" />
-    <div className='signin-container'>
-      <div className="left-div">
-        <HomeTitleSignIn />
-      </div>
-      <div className='signin-div'>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onInput={e => setEmail(e.target.value)}
-            required
+    <div>
+      <div>
+      <div
+        className="bg-cover bg-center bg-no-repeat h-screen blur-sm brightness-75"
+        style={{
+          backgroundImage: `url(${'https://www.nicheagriculture.com/wp-content/uploads/2023/09/Are-agriculture-and-farming-the-same-Agriculture-vs-Farming-1024x680.jpg'})`,
+        }}
+      ></div>
+    <div className="absolute flex flex-col items-center justify-center bg-none rounded-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-2">
+    <div className="shadow-lg justify-center items-center w-1/2 h-1/2">
+        <img
+            className="object-cover items-center"
+            src='https://www.nicheagriculture.com/wp-content/uploads/2023/09/Are-agriculture-and-farming-the-same-Agriculture-vs-Farming-1024x680.jpg'
+            alt="AgriLink Logo"
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onInput={e => setPassword(e.target.value)} 
-            required
-          />
-          <button type="submit">Log in</button>
-        </form>
-        <div className="divider">
-          <hr className="line" />
-          <span className="or">or</span>
-          <hr className="line" />
+    </div>
+    <div className="shadow-lg bg-white p-5 mt-0 h-1/2 w-1/2">
+    <div className="text-black text-left mb-5">
+          <p className="text-2xl"><b>LOG IN</b></p>
         </div>
-        <p>
-          Don't have an account?&nbsp;<Link to="/signup"> Sign Up</Link>
-        </p>
+      <div className='pb-3'>
+        <form onSubmit={handleSubmit}>
+          <div className='input-container'>
+            <label htmlFor="email" className="text-xs">Email Address</label>
+            <input
+            className="text-sm container mx-auto bg-lime-50 p-2"
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onInput={e => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className='input-container'>
+            <label htmlFor="email" className="text-xs">Password</label>
+            <input
+              className="text-sm container mx-auto bg-lime-50 p-2"
+              type="password"
+              placeholder="********"
+              value={password}
+              onInput={e => setPassword(e.target.value)} 
+              required
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-48 mt-5">
+            <div className="w-60">
+              <p className="text-xs">
+                Don't have an account?&nbsp;
+                <b>
+                  <p className="text-xs text-lime-800">
+                  <Link to="/signup"> Sign Up</Link>
+                  </p>
+                </b>
+              </p>
+            </div>
+            <div className='justify-right'>
+              <button
+                type="submit"
+                className="bg-lime-400 p-1 rounded-lg">Log in</button>
+            </div>
+          </div>
+        </form>
+        
       </div>
+    </div>
+    </div>
     </div>
     </div>
   );

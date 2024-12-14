@@ -4,12 +4,11 @@ function HomeTitleSignIn(){
     return (
         <>
         <div className="hometitlepage">
-            <ul className="hometitle-navtop">
-                <li><img src={image} className="icslogo" /></li>
-                <li className="hometitle-title">Department of <br />Agriculture</li>
-            </ul>
-            <div className='hometitle-name'>FieldFare</div>
-            <div className='hometitle-desc'>Skip the middleman, support farmers, savor <br />freshness!</div>
+        <img
+            className="size-20 items-center"
+            src="https://cdn-icons-png.flaticon.com/512/5994/5994257.png"
+            alt="AgriLink Logo"
+          />
         </div>
         </>
     );
