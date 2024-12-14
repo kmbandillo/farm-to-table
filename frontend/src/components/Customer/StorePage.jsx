@@ -123,8 +123,8 @@ function StorePage() {
           <option value="quantityDesc">Quantity (High to Low)</option>
         </select>
       </div>
-      <div className='product-cart-cont'>
-        <div className="product-list">
+      <div className='product-cart-cont flex-direction-row'>
+        <div className="product-list flex flex-wrap gap-3 py-4 justify-center flex-3 ">
           {sortProducts(products).map(product => (
             <ProductCard 
               key={product._id} 

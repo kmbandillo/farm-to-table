@@ -20,8 +20,8 @@ function ProductCard({ product, addToCart }) {
   };
 
   return (
-    <div className="product-card">
-      <img className="product-image" src={product.productImage} alt={product.productName}/>
+    <div className="product-card  text-center bg-white shadow-md rounded-lg p-4 m-4 z-3 relative h-fit-content">
+      <img className="product-image h-120 w-[95%] py-10" src={product.productImage} alt={product.productName}/>
       <div className='product-each-info'>
         <div>
           <h3 className="product-name">{productName}</h3>
