@@ -6,7 +6,7 @@ function MainHeader({title}){
         <header>
             <div className="mainheader-container">
                 <ul className="mainheader-navtop">
-                    <li><img src={image} className="mainheader-logo" /></li>
+                    <li><img src={image} className="mainheader-logo h-8" /></li>
                     <li className="mainheader-title">{title}</li>
                 </ul>
             </div>

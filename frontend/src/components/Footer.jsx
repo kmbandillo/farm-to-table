@@ -18,7 +18,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="copyright">
+        <div className="copyright text-center">
           <p>Copyright &#169; 2024 Agrilink. All rights reserved.</p>
         </div>
       </div>

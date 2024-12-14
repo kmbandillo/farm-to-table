@@ -15,7 +15,7 @@ import AdminOrders from './components/Admin/AdminOrders.jsx';
 import AdminSales from './components/Admin/AdminSales.jsx';
 import CheckoutPage from './components/Customer/CheckoutPage.jsx';
 import './styles/index.css';
-import './stylesheet.css';
+// import './stylesheet.css';
 
 import ProfilePage from './components/Customer/ProfilePage.jsx';
 

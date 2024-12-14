@@ -25,13 +25,13 @@ function CustomerNav({title, name, func}){
     return (
         <>
         <header>
-            <div className="customer-nav-container">
+            <div className="customer-nav-container bg-[#75B27C] py-4">
                 <ul className="customer-nav-navtop-left">
-                    <li><img src={image} className="customer-nav-logo" /></li>
-                    <li className="customer-nav-title">{title}</li>
+                    <li><img src={image} className="logo w-16 mx-6 "/></li>
+                    <li className="customer-nav-title text-4xl font-bold px-">{title}</li>
                 </ul>
-                <ul className="customer-nav-navtop-center">
-                    <li><Link to="/customer" className={activeLink === 'home' ? 'active' : ''}>HOME</Link></li>
+                <ul className="customer-nav-navtop-center ">
+                    <li className='text' text-black-200><Link to="/customer" className={activeLink === 'home' ? 'active' : ''}>HOME</Link></li>
                     <li><Link to="/customer/storepage" className={activeLink === 'storepage' ? 'active' : ''}>STORE</Link></li>
                     <li><Link to="/customer/orders" className={activeLink === 'orders' ? 'active' : ''}>ORDERS</Link></li>
                     {/* <li><Link to="/customer/about" className={activeLink === 'about' ? 'active' : ''}>ABOUT</Link></li> */}

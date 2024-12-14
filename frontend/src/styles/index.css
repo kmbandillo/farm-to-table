@@ -8,3 +8,17 @@
   background-color: #f4f4f4;
   font-size: 1.25rem;
 }
+
+.customer-nav-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 0;
+  z-index: 9999;
+}
+
+.customer-nav-title{
+  padding-top: 15px;
+  padding-left: 15px;
+}
