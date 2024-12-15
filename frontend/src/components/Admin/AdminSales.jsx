@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import AdminTitle from './AdminTitle';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -50,10 +51,10 @@ function AdminSales() {
 
     const filterDataByTimeRange = (data, range) => {
         const now = new Date(); // Current date and time
-    
+
         return data.filter(order => {
             const orderDate = new Date(order.date);
-    
+
             if (range === 'weekly') {
                 const oneWeekAgo = new Date(now);
                 oneWeekAgo.setDate(now.getDate() - 7);
@@ -69,7 +70,7 @@ function AdminSales() {
             }
             return true;
         });
-    };    
+    };
 
     return (
         <div>
