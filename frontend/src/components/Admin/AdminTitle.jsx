@@ -12,10 +12,10 @@ function AdminTitle({title}){
 
     return (
         <>
-        <div className='admintitle-container'>
-            <div className='admintitle-title'>
-                <button onClick={handleBack} className='backbutton'><i id='backbtn-icon' className="fas fa-chevron-left" />Back</button>
-                <h2>{title}</h2>
+        <div className='p-5'>
+            <div className='flex justify-between'>
+                <h2 className='text-xl font-extrabold'>{title}</h2>
+                <button onClick={handleBack} className='backbutton'><i id='backbtn-icon' className="fas fa-chevron-left" /> Back</button>
             </div>
         </div>
         </>

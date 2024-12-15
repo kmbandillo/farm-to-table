@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import AdminTitle from '../Admin/AdminTitle';
+import Footer from '../Footer'
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -61,33 +62,44 @@ function CheckoutPage() {
 
   return (
     <div className='checkout-whole'>
-      <AdminTitle title="Order Confirmation" />
+      <div className='bg-green-200'>
+        <AdminTitle title="Order Confirmation" />
+      </div>
       <div className='checkout-page-container'>
-        <p className='mot'><strong>Mode of Transaction:</strong> COD</p>
-        <div className="checkout-cart">
+        <div className="px-8 pt-8">
           {cart.length === 0 ? (
             <p>No items in the cart.</p>
           ) : (
             cart.map(item => (
-              <div key={item._id} className="checkout-cart-item">
+              <div key={item._id} className="flex bg-white outline outline-1 outline-gray-200 mb-5 p-5 rounded-lg shadow-lg">
                 <img src={item.productImage} alt={item.productName} width="100" height="50" className='checkout-image'/>
-                <h3>{item.productName}</h3>
-                <p>Quantity: {item.quantity}</p>
-                <p>Price: <i className="fas fa-peso-sign" />{item.productPrice}</p>
-                <p>Total: <i className="fas fa-peso-sign" />{item.productPrice * item.quantity}</p>
+                <div className='mx-10 my-auto'>
+                  <h3 className='text-xl font-bold'>{item.productName}</h3>
+                  <p className='text-sm'>Quantity: <b>{item.quantity}</b></p>
+                </div>
+                <div className='my-auto ml-[60%]'>
+                  <p className='text-gray-500 text-sm'>Price: <i className="fas fa-peso-sign" /> <b>{item.productPrice}</b></p>
+                  <p>Total: <i className="fas fa-peso-sign" /> <b>{item.productPrice * item.quantity}</b></p>
+                </div>
               </div>
             ))
           )}
         </div>
-        {cart.length > 0 && (
-          <div className="checkout-total">
-            <h3>Total Price: <i className="fas fa-peso-sign" />{totalPrice.toFixed(2)}</h3>
+        <div className='flex px-10 justify-between pb-10'>
+          <div className='text-lg'>
+            <p className='mot'><b className='text-green-700 text-sm'>Payment Method:</b> COD</p>
+            {cart.length > 0 && (
+              <div className="checkout-total">
+                <h3><b className='text-green-700 text-sm'>Total Payment:</b> <i className="fas fa-peso-sign" /> {totalPrice.toFixed(2)}</h3>
+              </div>
+            )}
           </div>
-        )}
-        <div className='confirm-order-button-container'>
-          <button id='confirm-order-button' onClick={FieldGetterChecker}>Confirm order</button>
+          <div className='confirm-order-button-container'>
+            <button id='confirm-order-button' className='px-8 py-2 text-white bg-[#75B27C] hover:bg-[#659a6b] rounded-lg w-[100%] shadow-md transition' onClick={FieldGetterChecker}>Confirm order</button>
+          </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
