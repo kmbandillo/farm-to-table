@@ -98,8 +98,7 @@ body {
     justify-content: center;
     /* max-height: 380px; */
     padding-bottom: 50px;
-    flex: 3;
-    
+    flex: 3; 
 }
 
 .product-cart-cont{

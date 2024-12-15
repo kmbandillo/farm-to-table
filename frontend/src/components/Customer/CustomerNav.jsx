@@ -44,6 +44,7 @@ function CustomerNav({title, name, func}){
                         </Link>
                     </li>
                     <button><li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt hover:text-white"></i></li></button>
+
                 </ul>
             </div>
         </header>

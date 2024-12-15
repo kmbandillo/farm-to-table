@@ -22,7 +22,9 @@ function ProductCard({ product, addToCart }) {
   return (
     <div className="w-[225px] p-5 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
       <img 
+
         className="w-[170px] h-[170px] object-contain" 
+
         src={product.productImage} 
         alt={productName} 
       />
