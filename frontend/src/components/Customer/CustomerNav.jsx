@@ -40,11 +40,10 @@ function CustomerNav({title, name, func}){
                     <li className='customer-nav-name m-auto mr-1'>{name}</li>
                     <li>
                         <Link to="/customer/profile">
-                            <img src={profile} className="customer-nav-profile size-[50px] mt-1" alt="Profile" />
+                            <img src={profile} className="customer-nav-profile mt-3" alt="Profile" />
                         </Link>
                     </li>
-                    <li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt"></i></li>
-
+                    <button><li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt hover:text-white"></i></li></button>
                 </ul>
             </div>
         </header>

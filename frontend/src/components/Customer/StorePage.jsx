@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 import ShoppingCart from './ShoppingCart';
 import ReactPaginate from 'react-paginate';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import image from '../../assets/storeimg.png';
+import image from '../../assets/mainbg.jpg';
 import Footer from '../Footer';
 
 function StorePage() {
@@ -106,28 +106,45 @@ function StorePage() {
 
   return (
     <div className="app">
-      <img src={image} className="store-img w-full" alt="Store Banner" />
-     
-      <div className="w-full flex">
-      <div className='left-container w-[85%]'>
-        <div className="sort-options py-4 text-center">
-        <select
-          id="sort"
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg"
-        >
-          <option value="nameAsc">Name (A to Z)</option>
-          <option value="nameDesc">Name (Z to A)</option>
-          <option value="priceAsc">Price (Low to High)</option>
-          <option value="priceDesc">Price (High to Low)</option>
-          <option value="typeAsc">Type (A to Z)</option>
-          <option value="typeDesc">Type (Z to A)</option>
-          <option value="quantityAsc">Quantity (Low to High)</option>
-          <option value="quantityDesc">Quantity (High to Low)</option>
-        </select>
+      <div
+        className="bg-cover bg-center bg-no-repeat h-screen"
+        style={{
+          backgroundImage: `url(${'https://www.nicheagriculture.com/wp-content/uploads/2023/09/Are-agriculture-and-farming-the-same-Agriculture-vs-Farming-1024x680.jpg'})`,
+        }}
+      >
+      <div className='h-[300px]'>
+        <div className='bg-black/50 h-full'>
+            <div className='pt-[150px]'>
+              <p className='text-white text-center text-3xl'>Welcome to <b>AgriLink's store</b></p>
+              <p className='text-white text-center'>Browse from these available fresh and nutritious products.</p>
+            </div>
+        </div>
       </div>
-        <div className="grid m-6 gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="w-full flex bg-white">
+      <div className='left-container w-full'>
+        <div className='flex p-10'>
+          <div className='w-[90%]'>
+            <p className='text-4xl font-extrabold'>Products</p>
+          </div>
+          <div className="sort-options text-center justify-end">
+            <select
+              id="sort"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-lg"
+            >
+              <option value="nameAsc">Name (A to Z)</option>
+              <option value="nameDesc">Name (Z to A)</option>
+              <option value="priceAsc">Price (Low to High)</option>
+              <option value="priceDesc">Price (High to Low)</option>
+              <option value="typeAsc">Type (A to Z)</option>
+              <option value="typeDesc">Type (Z to A)</option>
+              <option value="quantityAsc">Quantity (Low to High)</option>
+              <option value="quantityDesc">Quantity (High to Low)</option>
+            </select>
+          </div>
+        </div>
+        <div className="m-auto mb-10 w-[85%] grid m-6 gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           
           {sortProducts(products).map(product => (
             <ProductCard
@@ -151,6 +168,7 @@ function StorePage() {
         )}
       </div>
       <Footer />
+    </div>
     </div>
   );
 }
