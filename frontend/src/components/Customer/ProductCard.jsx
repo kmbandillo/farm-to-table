@@ -13,31 +13,40 @@ function ProductCard({ product, addToCart }) {
     { value: 4, label: 'Seafood' },
     { value: 5, label: 'Others' },
   ];
-  
+
   const getProductTypeLabel = (type) => {
     const option = productTypeOptions.find(option => option.value === parseInt(type));
     return option ? `${option.label} (${type})` : type;
   };
 
   return (
-    <div className="product-card">
-      <img className="product-image" src={product.productImage} alt={product.productName}/>
-      <div className='product-each-info'>
-        <div>
-          <h3 className="product-name">{productName}</h3>
-          <p className="product-price"><i className="fas fa-peso-sign" />{productPrice}</p>
-          </div>
-        <div className="type-qty1">
-          <p className="product-description">Description: {productDescription}</p>
-          <p className="product-type1">{getProductTypeLabel(product.productType)}</p>
-        </div>
+    <div className="w-[225px] p-5 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
+      <img 
+        className="w-[170px] h-[170px] object-cover" 
+        src={product.productImage} 
+        alt={productName} 
+      />
+      <div className="mt-3">
+        <h3 className="text-lg font-semibold text-gray-800 truncate">{productName}</h3>
+        <p className="text-sm text-gray-600 mt-1 truncate">{productDescription}</p>
+        <p className="text-sm font-medium text-gray-600">Type: {getProductTypeLabel(product.productType)}</p>
+
         {productQuantity > 0 ? (
-          <div>
-            <p className="product-quantity">Available Quantity: {productQuantity}</p>
-            <button onClick={handleAddToCart} className="add-to-cart-button">Add to Cart</button>
+          <div className="flex items-center flex-col mt-4">
+            <div className="price-qty my-3 flex items-center justify-between w-[100%]">
+              <p className="text-lg font-bold text-green-600">
+                <i className="fas fa-peso-sign" /> {productPrice.toFixed(2)}
+              </p>
+              <p className="text-sm font-medium text-gray-700">Qty: {productQuantity}</p>
+            </div>
+            <button 
+              onClick={handleAddToCart} 
+              className="px-8 py-2 text-white bg-[#75B27C] hover:bg-[#659a6b] rounded-lg w-[100%] shadow-md transition">
+              Add to Cart
+            </button>
           </div>
         ) : (
-          <p className="product-quantity">Out of Stock</p>
+          <p className="mt-4 text-sm font-medium text-red-600">Out of Stock</p>
         )}
       </div>
     </div>

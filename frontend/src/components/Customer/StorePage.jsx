@@ -10,7 +10,7 @@ function StorePage() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [sortOption, setSortOption] = useState('priceAsc');
-  const [isCartVisible, setIsCartVisible] = useState(false); 
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -49,7 +49,7 @@ function StorePage() {
       case 'quantityDesc':
         return products.sort((a, b) => b.productQuantity - a.productQuantity);
       default:
-        return products;  
+        return products;
     }
   };
 
@@ -106,12 +106,16 @@ function StorePage() {
 
   return (
     <div className="app">
-      <img src={image} className='store-img' />
-      <div className="sort-options">
+      <img src={image} className="store-img w-full" alt="Store Banner" />
+     
+      <div className="w-full flex">
+      <div className='left-container w-[85%]'>
+        <div className="sort-options py-4 text-center">
         <select
           id="sort"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
+          className="px-4 py-2 border border-gray-300 rounded-lg"
         >
           <option value="nameAsc">Name (A to Z)</option>
           <option value="nameDesc">Name (Z to A)</option>
@@ -123,22 +127,25 @@ function StorePage() {
           <option value="quantityDesc">Quantity (High to Low)</option>
         </select>
       </div>
-      <div className='product-cart-cont'>
-        <div className="product-list">
+        <div className="grid m-6 gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          
           {sortProducts(products).map(product => (
-            <ProductCard 
-              key={product._id} 
-              product={product} 
-              addToCart={addToCart} 
+            <ProductCard
+              key={product._id}
+              product={product}
+              addToCart={addToCart}
             />
           ))}
         </div>
+        </div>
+
+        {/* Shopping Cart */}
         {isCartVisible && (
-          <div className='shopping-cart-main'>
-            <ShoppingCart 
-              cart={cart} 
-              removeFromCart={removeFromCart} 
-              updateItemQuantity={updateItemQuantity} 
+          <div className="w-[25%] bg-gray-100 p-4">
+            <ShoppingCart
+              cart={cart}
+              removeFromCart={removeFromCart}
+              updateItemQuantity={updateItemQuantity}
             />
           </div>
         )}
