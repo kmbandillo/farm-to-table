@@ -122,7 +122,7 @@ function StorePage() {
         </div>
       </div>
       <div className="w-full flex bg-white">
-      <div className='left-container w-full'>
+      <div className='left-container w-[70%]'>
         <div className='flex p-10'>
           <div className='w-[90%]'>
             <p className='text-4xl font-extrabold'>Products</p>
@@ -145,8 +145,7 @@ function StorePage() {
             </select>
           </div>
         </div>
-        <div className="m-auto mb-10 w-[85%] grid m-6 gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          
+        <div className="m-auto mb-10 w-[85%] grid m-6 gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sortProducts(products).map(product => (
             <ProductCard
               key={product._id}
@@ -159,7 +158,7 @@ function StorePage() {
 
         {/* Shopping Cart */}
         {isCartVisible && (
-          <div className="w-[25%] bg-gray-100 p-4">
+          <div className="w-[30%] bg-lime-100 p-5">
             <ShoppingCart
               cart={cart}
               removeFromCart={removeFromCart}

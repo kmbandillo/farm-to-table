@@ -31,14 +31,18 @@ function CartItem({ item, removeFromCart, updateItemQuantity }) {
     };
 
     return (
-        <div className="flex items-center justify-between bg-white p-2 rounded-lg shadow-lg mb-2">
+        <div className="flex items-center justify-between bg-white p-5 rounded-xl shadow-lg mb-4">
             {/* Product Image */}
-            <img src={productImage} alt={productName} className="w-[80px] h-[80px] object-cover rounded-md" />
+            <img src={productImage} alt={productName} className="w-[80px] h-[80px] object-contain rounded-md" />
 
             <div className="flex-1 ml-4">
                 {/* Product Name */}
-                <h3 className="text-lg font-semibold text-gray-800 truncate">{productName}</h3>
-
+                <div className='flex'>
+                    <p className="text-lg font-semibold text-gray-800">{productName}</p>
+                    <p className="text-sm font-bold text-green-700 my-auto mx-5">
+                        <i className="fas fa-peso-sign" /> {productPrice * quantity}
+                    </p>
+                </div>
                 {/* Quantity Controls */}
                 <div className="flex items-center space-x-2 mt-2">
                     <button 
@@ -62,17 +66,12 @@ function CartItem({ item, removeFromCart, updateItemQuantity }) {
                         +
                     </button>
                 </div>
-
-                {/* Price */}
-                <p className="text-sm font-medium text-gray-700 mt-2 px-5">
-                    <i className="fas fa-peso-sign" /> {productPrice * quantity}
-                </p>
             </div>
 
             {/* Remove Button */}
             <button 
                 onClick={handleRemoveFromCart} 
-                className=" bg-red-500 rounded-xl p-3 text-sm text-black-600 hover:text-red-800 focus:outline-none"
+                className="font-semibold bg-red-500 rounded-xl p-3 text-sm text-black-600 focus:outline-none hover:bg-red-600 hover:text-white"
             >
                 Remove Item
             </button>
