@@ -13,7 +13,7 @@ function ShoppingCart({ cart, removeFromCart, updateItemQuantity }) {
 
   return (
     <div className="shopping-cart">
-      <h2 className="shopping-cart-title"><i className="fas fa-shopping-cart"></i>&nbsp;&nbsp;Shopping Cart [{totalQuantity}]</h2>
+      <h2 className="text-xl font-extrabold mb-3"><i className="fas fa-shopping-cart"></i>&nbsp;&nbsp;Shopping Cart [{totalQuantity}]</h2>
       <div className="cart-list">
         {cart.map(item => (
           <CartItem 
@@ -26,7 +26,7 @@ function ShoppingCart({ cart, removeFromCart, updateItemQuantity }) {
       </div>
       { cart.length > 0 && (
         <div className='checkout-container'>
-          <button className='checkout-button' onClick={handleCheckout}>Checkout</button>
+          <button className='px-8 py-2 text-white bg-[#75B27C] hover:bg-[#659a6b] rounded-lg w-[100%] shadow-md transition' onClick={handleCheckout}>Checkout</button>
         </div>
       )}
     </div>
