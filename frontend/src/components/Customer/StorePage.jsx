@@ -106,6 +106,7 @@ function StorePage() {
 
   return (
     <div className="app">
+
       <div
         className="bg-cover bg-center bg-no-repeat h-screen"
         style={{
