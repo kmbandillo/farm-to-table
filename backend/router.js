@@ -6,23 +6,46 @@ import { addTransaction, getPendingTransactions, updateTransactionStatus, cancel
 
 const router = Router();
 
-router.post('/signup', signUp);
-
-// Authentication routes
+//routes for authentication
 router.post('/signup', signUp);
 router.post('/login', login);
 router.post('/checkifloggedin', checkIfLoggedIn);
 router.post('/addadmin', addAdmin);
+
+//routes for products
 router.post('/products', createProduct); 
 router.get('/getproducts', getAllProducts);
-router.delete('/products/:id', deleteProduct);
-router.put('/products/:id', updateProduct);
+router.delete('/products/:id', deleteProduct); // Add delete route
+router.put('/products/:id', updateProduct); // Add update route
 router.get('/search', searchProducts);
+// router.get('/products/sort', async (req, res) => {
+//     const { criteria, order } = req.query;
+//     console.log('Received criteria:', criteria);
+//     console.log('Received order:', order);
+//     try {
+//         const sortedProducts = await sortProducts(criteria, order); // Pass criteria and order to sortProducts function
+//         res.status(200).json(sortedProducts);
+//     } catch (error) {
+//         console.error('Error sorting products:', error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// });
 
-// User routes
 router.get('/getcustomers', getCustomers);
+
+router.post('/add-transaction', addTransaction);
+router.get('/pending-transactions', getPendingTransactions);
+router.post('/update-transaction-status', updateTransactionStatus);
+router.post('/cancel-transaction', cancelTransaction);
+router.get('/customer-orders/:userId', getCustomerOrders);
+router.delete('/cancel-order/:orderId', cancelOrder);
+router.get('/total-counts', getTotalCounts);
+router.get('/total-prices', getTotalPrices);
+
 router.post('/user/:userId', updateUser);
 router.get('/user-deets/:userId', getUserDetails);
 router.get('/user-transactions/:userId', getUserCompletedOrders);
+
+router.get('/sales-report', getCompletedOrders);
 
 export default router;
