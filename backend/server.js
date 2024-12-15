@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors({
   origin: 'http://localhost:5173', // Your frontend URL
-  methods: ['GET', 'POST'],       // Allowed methods
+  methods: ['GET', 'POST', 'DELETE'],       // Allowed methods
   credentials: true               // Include credentials if needed
 }));
 
