@@ -7,8 +7,8 @@ function ProductCard({ product, addToCart }) {
   };
 
   const productTypeOptions = [
-    { value: 1, label: 'Staple' },
-    { value: 2, label: 'Fruits/Vegetables' },
+    { value: 1, label: 'Crops' },
+    { value: 2, label: 'Poultry' },
   ];
 
   const getProductTypeLabel = (type) => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './ProfilePage.css'; 
 import image from '../../assets/pictureprofile.png';
 import backgroundImage from '../../assets/mainbg.jpg';
 
@@ -128,7 +127,7 @@ function ProfilePage({ initialUser }) {
             <div className='content'>
                 <div className='profile-cont'>
                     <h2 className="profile-heading">Profile</h2> 
-                    <img src={image} className='alice'/>
+                    <img src={image} className='profile-pic'/>
                 </div>
                 <div className="profile-details"> 
                     <p><strong>First Name:</strong> {user.firstName}</p>

@@ -33,6 +33,7 @@ function CustomerOrders() {
         headers: { 'Content-Type': 'application/json' },
       });
   
+  
       const data = await response.json();
       if (data.success) {
         alert('Order cancelled successfully');
