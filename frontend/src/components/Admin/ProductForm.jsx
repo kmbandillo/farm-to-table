@@ -41,38 +41,45 @@ function ProductForm({ closeModal, setProducts }) {
 
     return (
         <div>
-            <h2 className='modal-title'>Add Product</h2>
+            <h2 className='modal-title text-xl font-extrabold'>Add Product</h2>
+            <div className='border border-gray-300 shadow-sm mb-2'></div>
             <form onSubmit={handleSubmit}>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Image</label>
+                <div className='input-modal flex flex-col mb-2'>
+                    <label className='edit-label text-sm'>Product Image</label>
                     <input
                         type="text"
+                        placeholder='Image Link'
                         value={productImage}
+                        className='bg-green-100 p-1 px-2'
                         onChange={(e) => setProductImage(e.target.value)}
                         required
                     />
                 </div>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Name</label>
+                <div className='input-modal flex flex-col mb-2'>
+                    <label className='edit-label text-sm'>Product Name</label>
                     <input
                         type="text"
+                        placeholder='Name'
                         value={productName}
+                        className='bg-green-100 p-1 px-2'
                         onChange={(e) => setProductName(e.target.value)}
                         required
                     />
                 </div>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Description</label>
+                <div className='input-modal flex flex-col mb-2'>
+                    <label className='edit-label text-sm'>Product Description</label>
                     <input
                         type="text"
+                        placeholder='Description'
                         value={productDescription}
+                        className='bg-green-100 p-1 px-2'
                         onChange={(e) => setProductDescription(e.target.value)}
                         required
                     />
                 </div>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Type</label>
-                    <select className='product-type-dropdown'
+                <div className='input-modal flex flex-col mb-2'>
+                    <label className='edit-label text-sm'>Product Type</label>
+                    <select className='product-type-dropdown bg-green-100 p-1 px-2 rounded-md border border-gray-400'
                         value={productType}
                         onChange={(e) => setProductType(Number(e.target.value))} // Convert the selected value to a number
                         required
@@ -84,27 +91,31 @@ function ProductForm({ closeModal, setProducts }) {
                         ))}
                     </select>
                 </div>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Quantity</label>
+                <div className='input-modal flex flex-col mb-2'>
+                    <label className='edit-label text-sm'>Product Quantity</label>
                     <input
                         type="number"
+                        placeholder='0'
                         value={productQuantity}
+                        className='bg-green-100 p-1 px-2'
                         onChange={(e) => setProductQuantity(e.target.value)}
                         required
                     />
                 </div>
-                <div className='input-modal'>
-                    <label className='edit-label'>Product Price</label>
+                <div className='input-modal flex flex-col mb-5'>
+                    <label className='edit-label text-sm'>Product Price</label>
                     <input
                         type="number"
+                        placeholder='0'
                         value={productPrice}
+                        className='bg-green-100 p-1 px-2'
                         onChange={(e) => setProductPrice(e.target.value)}
                         required
                     />
                 </div>
-                <div className='modal-btns'>
-                    <button type="button" className='modal-cancel-btn' onClick={closeModal}>Cancel</button>
-                    <button type="submit" className='modal-update-btn'>Add</button>
+                <div className='modal-btns flex gap-3'>
+                <button type="submit" className='modal-update-btn bg-[#5C8B57] p-2 rounded-lg text-white hover:bg-lime-700'>Add</button>
+                    <button type="button" className='modal-cancel-btn bg-red-900 p-2 rounded-lg text-white hover:bg-red-800' onClick={closeModal}>Cancel</button>
                 </div>
             </form>
         </div>
