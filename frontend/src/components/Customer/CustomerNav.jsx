@@ -27,7 +27,7 @@ function CustomerNav({title, name, func}){
         <header>
             <div className="flex bg-[#75B27C] px-8 m-auto">
                 <ul className="flex w-[23%]">
-                    <li><img src={image} className="logo size-[60px]"/></li>
+                    <li><img src={image} className="logo size-[60px] mt-2"/></li>
                     <li className="ml-2 my-auto text-xl font-bold">{title}</li>
                 </ul>
                 <ul className="flex justify-evenly w-[67%] my-auto text-white">
@@ -40,7 +40,7 @@ function CustomerNav({title, name, func}){
                     <li className='customer-nav-name m-auto mr-1'>{name}</li>
                     <li>
                         <Link to="/customer/profile">
-                            <img src={profile} className="customer-nav-profile size-[50px] mt-1" alt="Profile" />
+                            <img src={profile} className="customer-nav-profile py-1 " alt="Profile" />
                         </Link>
                     </li>
                     <button><li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt hover:text-white"></i></li></button>
