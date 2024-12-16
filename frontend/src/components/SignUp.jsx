@@ -67,7 +67,7 @@ function SignUp() {
         <div className="bg-white p-10 items-center shadow-xl">
           <div>
             <h2 className="text-left pb-2">
-              <b>SIGN UP</b>
+              <b className="text-xl font-extrabold">SIGN UP</b>
             </h2>
           </div>
           <form onSubmit={handleSignUp}>
@@ -103,7 +103,7 @@ function SignUp() {
                   </div>
                 </div>
                 <div className="input-container">
-                  <label htmlFor="lastName">Last Name</label>
+                  <label className="text-xs" htmlFor="lastName">Last Name</label>
                   <input
                     className="text-sm container mx-auto bg-lime-50 p-2"
                     type="text"
@@ -117,7 +117,7 @@ function SignUp() {
               </div>
               <div className="signup-div-right">
                 <div className="input-container">
-                  <label htmlFor="email">Email Address</label>
+                  <label className="text-xs" htmlFor="email">Email Address</label>
                   <input
                     className="text-sm container mx-auto bg-lime-50 p-2"
                     type="email"
@@ -129,7 +129,7 @@ function SignUp() {
                   />
                 </div>
                 <div className="input-container">
-                  <label htmlFor="password">Password</label>
+                  <label className="text-xs" htmlFor="password">Password</label>
                   <input
                     className="text-sm container mx-auto bg-lime-50 p-2"
                     type="password"
@@ -140,7 +140,7 @@ function SignUp() {
                     required
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-8 mt-5">
+                <div className="flex justify-between mt-5">
                   <div className="w-60">
                     <p className="text-sm">Already have an account?</p>
                     <b>
