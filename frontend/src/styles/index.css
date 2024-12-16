@@ -194,3 +194,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for profile image */
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in WebKit browsers */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* Hides the scrollbar in Internet Explorer 10+ */
+  scrollbar-width: none;      /* Hides the scrollbar in Firefox */
+}

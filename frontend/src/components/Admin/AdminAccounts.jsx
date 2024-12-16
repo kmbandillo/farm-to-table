@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminTitle from './AdminTitle';
 import AdminSearchAcc from './AdminSearchAcc';
 import Footer from '../Footer';
-import backgroundImage from '../../assets/adminbg.png';
-import '../../stylesheet.css'
+
 
 function AdminAccounts() {
     const [customers, setCustomers] = useState([]);
@@ -44,9 +43,9 @@ function AdminAccounts() {
             <AdminTitle title="Manage Accounts" />
             <div className='flex flex-row ml-[5.2%] mt-[1.1%]'>
                 <AdminSearchAcc title="Search account" onSearch={handleSearch} />
-                <p className='w-60 ml-[15.5%] bg-white bg-opacity-80 rounded-lg shadow-xl text-base mt-[32px] text-[#31454D] text-center'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
+                <p className='w-60 ml-[65%] bg-white bg-opacity-80 rounded-lg shadow-xl text-base text-[#31454D] text-center'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
             </div>
-            <div className="overflow-auto bg-[#94B690] max-h-[500px] bg-opacity-85 rounded-lg shadow-xl mt-10 p-10">
+            <div className="overflow-auto bg-[#94B690] max-h-[500px] bg-opacity-85 rounded-lg shadow-xl mt-10 p-10 custom-scrollbar">
             <ul className='list-none'>
                         {filteredCustomers.length === 0 ? (
                             <li className = "text-center p-5 text-lg text-black">No customers found </li>
