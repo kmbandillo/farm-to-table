@@ -61,10 +61,15 @@ function AdminCatalog() {
 
     return (
         <div className="admincatalog-container">
-            <AdminTitle title="Manage Catalog" />
+            <div className='bg-green-100 m-5'>
+                <AdminTitle title="Manage Catalog" />
+            </div>
             {/* <ProductForm /> */}
-            <AdminSearch title="Search product name" onSearch={handleSearch} onSortChange={handleSortChange} setProducts={setProducts} />
-            <ProductsPage initialProducts={products} onSearch={handleSearch} />
+            <div className='bg-green-100 m-5 p-5'>
+                <AdminSearch title="Search product name" onSearch={handleSearch} onSortChange={handleSortChange} setProducts={setProducts} />
+                <ProductsPage initialProducts={products} onSearch={handleSearch} />
+            </div>
+            
             <Footer />
         </div>
     );
