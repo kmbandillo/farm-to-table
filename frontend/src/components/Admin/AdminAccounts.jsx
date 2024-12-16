@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminTitle from './AdminTitle';
 import AdminSearchAcc from './AdminSearchAcc';
 import Footer from '../Footer';
+import backgroundImage from '../../assets/adminbg.png';
 
 // AdminAccounts: component that displays and manages customer accounts
 function AdminAccounts() {
@@ -37,44 +38,41 @@ function AdminAccounts() {
     // UI component
     return (
         <>
-        <div className='admin-accounts-container'> 
-            <AdminTitle title="Manage Accounts" />
-
-            <div className='adminaccs-top'>
-                <AdminSearchAcc title="Search account" onSearch={handleSearch} />
-                <p className='totalaccs'>Total Customer Accounts: <b>{filteredCustomers.length}</b></p>
+        {/* <div className='relative z-10 bg-none max-w-screen-x1 mx-auto p-20 items-center min-h-screen overflow-auto'>  */}
+        <div
+       
+      >
+        <div className='my-5'>
+            <div className='m-5'>
+                 <AdminTitle title="Manage Accounts" />
             </div>
-            <div className='table-container'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Usertype</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="bg-green-200 mx-5 py-5 px-10">
+            <div className='flex flex-row justify-between'>
+            <AdminSearchAcc title="Search account" onSearch={handleSearch} />
+            <div className='flex'>
+                <p className='h-10 mt-3 bg-white rounded-lg text-base p-2 text-[#31454D] text-center'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
+            </div>
+            </div>
+            
+            <ul className='list-none'>
                         {filteredCustomers.length === 0 ? (
-                            <tr>
-                                <td colSpan="4">No customers found</td>
-                            </tr>
+                            <li className = "text-center p-5 text-lg text-black">No customers found </li>
                         ) : (
                             filteredCustomers.map((customer) => (
-                                <tr key={customer._id}>
-                                    <td>{customer.firstName}</td>
-                                    <td>{customer.middleName}</td>
-                                    <td>{customer.lastName}</td>
-                                    <td>{customer.email}</td>
-                                    <td>{customer.userType}</td>
-                                </tr>
+                                <li key={customer._id} className = 'bg-white border-white rounded-xl p-5 my-6 shadow-xl transition-all duration-200 ease-in-out'>
+                                    <p className="my-2 text-sm"><strong className="font-bold">First Name:</strong> {customer.firstName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Middle Name:</strong> {customer.middleName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Last Name:</strong> {customer.lastName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Email:</strong> {customer.email}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">User type:</strong> {customer.userType}</p>
+                                </li>
                             ))
                         )}
-                    </tbody>
-                </table>
+            </ul>
             </div>
         </div>
+        </div>
+        {/* </div> */}
         <Footer />
         </>
     );
