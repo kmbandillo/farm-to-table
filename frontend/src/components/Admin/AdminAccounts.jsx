@@ -34,27 +34,37 @@ function AdminAccounts() {
 
     return (
         <>
-        <div className='admin-accounts-container'> 
+        <div className='relative z-10 bg-none max-w-screen-x1 mx-auto p-20 items-center min-h-screen overflow-auto'> 
+        <div
+        className="bg-cover bg-center bg-no-repeat h-full brightness-75 absolute top-0 left-0 w-full z-0"
+        style={{
+          backgroundImage: `url(${'https://www.nicheagriculture.com/wp-content/uploads/2023/09/Are-agriculture-and-farming-the-same-Agriculture-vs-Farming-1024x680.jpg'})`,
+        }}
+      >
             <AdminTitle title="Manage Accounts" />
-            <div className='adminaccs-top'>
+            <div className='flex flex-row ml-[5.2%] mt-[1.1%]'>
                 <AdminSearchAcc title="Search account" onSearch={handleSearch} />
                 <p className='totalaccs'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
             </div>
-            <ul className='account-container'>
+            <div className="overflow-auto max-h-[450px] bg-[rgba(146, 197, 136, 0.8)] rounded-lg shadow-lg mt-5 p-5">
+            <ul className='list-none p-0 m-0'>
                         {filteredCustomers.length === 0 ? (
-                            <li className = "no-customers">No customers found </li>
+                            <li className = "text-center p-5 text-lg text-gray-600">No customers found </li>
                         ) : (
                             filteredCustomers.map((customer) => (
-                                <li key={customer._id} className = 'customer-accounts'>
-                                    <p><strong>First Name:</strong> {customer.firstName}</p>
-                                    <p><strong>Middle Name:</strong> {customer.middleName}</p>
-                                    <p><strong>Last Name:</strong> {customer.lastName}</p>
-                                    <p><strong>Email:</strong> {customer.email}</p>
-                                    <p><strong>User type:</strong> {customer.userType}</p>
+                                <li key={customer._id} className = 'bg-white rounded-lg p-5 my-6 shadow-lg transition-all duration-200 ease-in-out hover:shadow-2xl hover:-translate-y-1'>
+                                    <p class="my-2 text-sm"><strong class="font-bold">First Name:</strong> {customer.firstName}</p>
+                                    <p class="my-2 text-sm"><strong class="font-bold">Middle Name:</strong> {customer.middleName}</p>
+                                    <p class="my-2 text-sm"><strong class="font-bold">Last Name:</strong> {customer.lastName}</p>
+                                    <p class="my-2 text-sm"><strong class="font-bold">Email:</strong> {customer.email}</p>
+                                    <p class="my-2 text-sm"><strong class="font-bold">User type:</strong> {customer.userType}</p>
                                 </li>
                             ))
                         )}
             </ul>
+            </div>
+        </div>
+
         </div>
         <Footer />
         </>
