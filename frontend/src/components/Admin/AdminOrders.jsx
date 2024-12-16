@@ -77,43 +77,51 @@ function AdminOrders() {
     }
 
     return (
-    <div className="admin-orders1">
+    <div>
+      <div className='p-5'>
         <AdminTitle title="Manage Order Requests" />
-        <div className='orders-section1'>
-            {orders.length === 0 ? (
-                <p className="no-orders1">No pending orders.</p>
-            ) : (
-                orders.map(order => (
-                <div key={order._id} className="order-card1">
-                    <div className="order-header1">
-                    <h3 className='order-id-title'>Order ID: {order._id}</h3>
-                    </div>
-                    <div className="order-details1">
-                        <p><strong>Email:</strong> {order.userId?.email}</p>
-                        <p><strong>Date:</strong> {new Date(order.date).toLocaleDateString()}</p>
-                        <p><strong>Time:</strong> {order.time}</p>
-                        <div className="order-products1">
-                            <p><strong>Products:</strong></p>
-                            <div className="product-list1">
-                            {order.products.map((product, index) => (
-                                <div key={index} className="product-item1">
-                                <p><strong>Name:</strong> {product.productId?.productName}</p>
-                                <p><strong>Quantity:</strong> {product.quantity}</p>
-                                </div>
-                            ))}
+        <div className='my-5'>
+          <div className='bg-green-200 p-8'>
+              {orders.length === 0 ? (
+                  <p className="text-center">No pending orders.</p>
+              ) : (
+                  orders.map(order => (
+                  <div key={order._id} className="bg-white border border-gray-300 p-5 rounded-lg shadow-2xl">
+                      <div className="order-header1">
+                      <h3 className='text-xl'><strong>Order ID:</strong> {order._id}</h3>
+                      </div>
+                      <div className="order-details1 text-sm flex justify-evenly">
+                          <div className='p-2 w-full'>
+                            <p><strong>Email:</strong> {order.userId?.email}</p>
+                            <p><strong>Date:</strong> {new Date(order.date).toLocaleDateString()}</p>
+                            <p><strong>Time:</strong> {order.time}</p>
+                          </div>
+                          <div className="p-2 w-full">
+                              <p><strong>Products:</strong></p>
+                              <div className="product-list1 flex-col flex gap-3 overflow-y-scroll h-[30px]">
+                              {order.products.map((product, index) => (
+                                  <div key={index} className="product-item1 text-xs">
+                                  <p><strong>Name:</strong> {product.productId?.productName}</p>
+                                  <p><strong>Quantity:</strong> {product.quantity}</p>
+                                  </div>
+                              ))}
+                              </div>
+                          </div>
+                          <div className='py-3 w-full text-center m-auto'><p className='text-md'><strong>Order Status:</strong> {getStatusText(order.status)}</p></div>
+                          <div className='w-full text-right my-auto'>
+                            <div className="order-actions1">
+                              <button className="cancel-button1 bg-red-900 p-2 rounded-lg text-white hover:bg-red-800 mr-1" onClick={() => cancelOrder(order._id)}>Decline</button>
+                              <button className="confirm-button1 bg-[#5C8B57] p-2 rounded-lg text-white hover:bg-lime-700" onClick={() => confirmOrder(order._id)}>Approve</button>
                             </div>
-                        </div>
-                        <p><strong>Order Status:</strong> {getStatusText(order.status)}</p>
-                        <div className="order-actions1">
-                            <button className="cancel-button1" onClick={() => cancelOrder(order._id)}>Decline</button>
-                            <button className="confirm-button1" onClick={() => confirmOrder(order._id)}>Approve</button>
-                        </div>
-                    </div>
-                </div>
-                ))
-            )}
+                          </div>
+                      </div>
+                  </div>
+                  ))
+              )}
+          </div>
         </div>
-        <Footer />
+      </div>
+      <Footer />
     </div>
   );
 }
