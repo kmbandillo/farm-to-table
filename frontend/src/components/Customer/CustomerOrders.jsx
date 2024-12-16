@@ -57,17 +57,17 @@ function CustomerOrders() {
       <div className='bg-green-200'>
         <AdminTitle title="My Orders" />
       </div>
-        <div className="customer-orders-container">
-          <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
-            <div className="bg-gray-100 border-b rounded-t-xl pt-3 px-4 md:pt-4 md:px-5 dark:bg-neutral-800 dark:border-neutral-700">
+        <div className="customer-orders-container p-5">
+          <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-green-200 dark:border-neutral-300 dark:shadow-neutral-700/70">
+            <div className="bg-white border-b rounded-t-xl pt-3 px-4 md:pt-4 md:px-5 dark:border-white">
               <nav className="flex gap-x-2">
-                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'pending' ? 'text-green-800 border-green-800 bg-white' : 'text-gray-500 dark:border-neutral-700 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('pending')}>Pending</a>
-                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'confirmed' ? 'text-green-800 border-green-500 bg-white' : 'text-gray-500 dark:border-neutral-700 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('confirmed')}>Confirmed</a>
-                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'cancelled' ? 'text-green-800 border-green-500 bg-white' : 'text-gray-500 dark:border-neutral-700 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('cancelled')}>Cancelled</a>
+                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'pending' ? 'text-green-800 border-green-500 bg-green-200' : 'text-gray-500 dark:border-neutral-400 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('pending')}>Pending</a>
+                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'confirmed' ? 'text-green-800 border-green-500 bg-green-200' : 'text-gray-500 dark:border-neutral-400 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('confirmed')}>Confirmed</a>
+                <a className={`-mb-px py-3 px-4 text-sm text-center font-bold border-b rounded-t-lg hover:text-gray-700 focus:outline-none focus:z-10 ${activeSection === 'cancelled' ? 'text-green-800 border-green-500 bg-green-200' : 'text-gray-500 dark:border-neutral-400 dark:hover:text-neutral-400'}`} onClick={() => setActiveSection('cancelled')}>Cancelled</a>
               </nav>
             </div>
 
-            <div className="p-4 text-center md:py-7 md:px-5">
+            <div className="p-4 text-center md:py-7 md:px-8">
               {activeSection === 'pending' && (
                 <div>
                   {pendingOrders.length === 0 ? (

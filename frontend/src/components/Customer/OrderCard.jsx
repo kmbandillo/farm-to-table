@@ -9,11 +9,11 @@ function OrderCard({ order, cancelOrder }) {
   };
 
   return (
-    <div key={order._id} className="border flex rounded-xl shadow-md p-4 mb-2 dark:bg-neutral-800 dark:border-neutral-700">
+    <div key={order._id} className="border flex rounded-xl shadow-md p-4 mb-2 dark:bg-white dark:border-neutral-400">
       {/* Left Section: Order ID */}
-      <div className="flex flex-col justify-between w-1/4">
+      <div className="flex flex-col justify-between w-1/4 ml-5">
         <div className="customer-order-header">
-          <h3 className="my-8 text-lg">Order ID: {order._id}</h3>
+          <h3 className="my-8 text-lg"><b>Order ID:</b> {order._id}</h3>
         </div>
       </div>
 
@@ -46,13 +46,20 @@ function OrderCard({ order, cancelOrder }) {
       {/* Modal for Order Details */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-96">
-            <h2 className="text-2xl mb-4 font-semibold">Order Details</h2>
+          <div className="bg-white p-6 py-10 rounded-xl shadow-lg w-96">
+            <h2 className="text-2xl mb-4 font-bold">Order Details</h2>
             <div className="customer-order-product-list">
+              <div className='text-left mx-6'>
+                <p className='text-sm'><b>Order ID: </b>{order._id}</p>
+                <p className='text-sm'><b>Date: </b>{order.date}</p>
+                <p className='text-sm'><b>Time: </b>{order.time}</p>
+              </div>
+              <div className="h-0.5 w-[90%] bg-gray-300 mx-auto m-4"></div>
               {/* Loop through each product and display its name and quantity */}
               {order.products.map((product, index) => (
                 <div key={index} className="customer-product-item flex flex-row justify-between mx-10 mb-2">
                   <p>{product.productId?.productName}</p>
+                  <p><i className="fas fa-peso-sign" /> {product.productId?.productPrice}</p>
                   <p>x{product.quantity}</p>
                 </div>
               ))}
@@ -61,11 +68,15 @@ function OrderCard({ order, cancelOrder }) {
             {/* Calculate the total (assuming each product has a price) */}
             <div className="mt-4">
               <div className="h-0.5 w-[90%] bg-gray-300 mx-auto m-4"></div>
-              <p className="font-semibold text-xl">
-                Total: ₱{
-                  order.products.reduce((total, product) => total + (product.productId?.productPrice || 0) * product.quantity, 0)
-                }
-              </p>
+              <div className='flex justify-between px-10'>
+                <p className="font-semibold text-xl">
+                <b>Total:</b>
+                </p>
+                <p className='text-lg font-bold text-green-900'><i className="fas fa-peso-sign" />{
+                    order.products.reduce((total, product) => total + (product.productId?.productPrice || 0) * product.quantity, 0)
+                }</p>
+              </div>
+              
             </div>
 
             {/* Close button */}
