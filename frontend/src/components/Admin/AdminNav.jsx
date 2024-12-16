@@ -4,9 +4,11 @@ import image from '../../assets/logo.png';
 import profile from '../../assets/pictureprofile.png';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+// AdminNav: component for the navigation bar on admin side
 function AdminNav({ title, name, func }) {
     const location = useLocation();
 
+    // UI component
     return (
         <header>
             <div className="flex bg-[#75B27C] m-auto px-8 ">

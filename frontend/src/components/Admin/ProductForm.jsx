@@ -7,6 +7,7 @@ const productTypeOptions = [
 ];
 
 function ProductForm({ closeModal, setProducts }) {
+    // local state variables to store product data
     const [productImage, setProductImage] = useState('');
     const [productName, setProductName] = useState('');
     const [productDescription, setProductDescription] = useState('');
@@ -15,9 +16,10 @@ function ProductForm({ closeModal, setProducts }) {
     const [productPrice, setProductPrice] = useState('');
     const navigate = useNavigate();
 
+    // handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
+        e.preventDefault(); // prevent default form submission
+        try { // add new product
             const response = await fetch('http://localhost:3002/products', {
                 method: 'POST',
                 headers: {
@@ -26,10 +28,12 @@ function ProductForm({ closeModal, setProducts }) {
                 body: JSON.stringify({ productImage, productName, productDescription, productType, productQuantity, productPrice }),
             });
             const data = await response.json();
+
+            // if product is added succesfully, update products list and close modal
             if (data.success) {
-                setProducts((prevProducts) => [...prevProducts, data.product]); // Add the new product to the list
-                closeModal(); // Close the modal
-                navigate('/admin/catalog'); // Navigate to the catalog page
+                setProducts((prevProducts) => [...prevProducts, data.product]); // add the new product to the list
+                closeModal(); // close the modal
+                navigate('/admin/catalog'); // navigate to the catalog page
             } else {
                 alert('Error: Unable to add product');
             }
@@ -39,6 +43,7 @@ function ProductForm({ closeModal, setProducts }) {
         }
     };
 
+    // UI component
     return (
         <div>
             <h2 className='modal-title text-xl font-extrabold'>Add Product</h2>

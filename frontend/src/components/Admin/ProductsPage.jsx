@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // For accessibility, should be the root element of your app
 
 function ProductsPage({ initialProducts, onSearch }) {
+    // state variables to manage products, modal, form values
     const [products, setProducts] = useState(initialProducts || []);
     const [filteredProducts, setFilteredProducts] = useState(initialProducts || []);
     const [editProduct, setEditProduct] = useState(null);
@@ -18,11 +19,13 @@ function ProductsPage({ initialProducts, onSearch }) {
         productPrice: '',
     });
 
+    // update state
     useEffect(() => {
-        setProducts(initialProducts || []); // Update products state when initialProducts prop changes
-        setFilteredProducts(initialProducts || []); // Update filteredProducts state similarly
+        setProducts(initialProducts || []); // update products state when initialProducts prop changes
+        setFilteredProducts(initialProducts || []); // update filteredProducts state similarly
     }, [initialProducts]);
 
+    // handle search functionality to filter products by name
     const handleSearch = (searchQuery) => {
         const filtered = products.filter(product =>
             product.productName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -31,6 +34,7 @@ function ProductsPage({ initialProducts, onSearch }) {
         onSearch(searchQuery);
     };
 
+    // handle product deletion
     const handleDelete = async (id) => {
         try {
             const response = await fetch(`http://localhost:3002/products/${id}`, {
@@ -39,6 +43,7 @@ function ProductsPage({ initialProducts, onSearch }) {
             if (!response.ok) {
                 throw new Error('Failed to delete product');
             }
+            // remove deleted product from state
             setProducts(products.filter(product => product._id !== id));
             setFilteredProducts(filteredProducts.filter(product => product._id !== id));
         } catch (error) {
@@ -46,6 +51,7 @@ function ProductsPage({ initialProducts, onSearch }) {
         }
     };
 
+    // open model to edit a product
     const handleEdit = (product) => {
         setEditProduct(product._id);
         setFormValues({
@@ -59,6 +65,7 @@ function ProductsPage({ initialProducts, onSearch }) {
         setIsModalOpen(true); // Show the modal
     };
 
+    // handle form field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({
@@ -66,7 +73,8 @@ function ProductsPage({ initialProducts, onSearch }) {
             [name]: value,
         });
     };
-    
+
+    // handle product update on submit
     const handleUpdate = async () => {
         try {
             const response = await fetch(`http://localhost:3002/products/${editProduct}`, {
@@ -79,13 +87,18 @@ function ProductsPage({ initialProducts, onSearch }) {
             if (!response.ok) {
                 throw new Error('Failed to update product');
             }
+
+            // get updated product
             const updatedProduct = await response.json();
+            // update products state with updated product
             setProducts(products.map(product =>
                 product._id === editProduct ? updatedProduct.product : product
             ));
             setFilteredProducts(filteredProducts.map(product =>
                 product._id === editProduct ? updatedProduct.product : product
             ));
+
+            // clear form and close modal
             setEditProduct(null);
             setFormValues({
                 productImage: '',
@@ -95,22 +108,25 @@ function ProductsPage({ initialProducts, onSearch }) {
                 productQuantity: '',
                 productPrice: '',
             });
-            setIsModalOpen(false); // Hide the modal
+            setIsModalOpen(false); // close modal
         } catch (error) {
             console.error('Error updating product:', error);
         }
     };
 
+    // product types
     const productTypeOptions = [
         { value: 1, label: 'Crops' },
         { value: 2, label: 'Poultry' },
     ];
 
+    // function to get product type label
     const getProductTypeLabel = (type) => {
         const option = productTypeOptions.find(option => option.value === parseInt(type));
         return option ? `${option.label} (${type})` : type;
     };
 
+    // UI component
     return (
         <div>
             <div>

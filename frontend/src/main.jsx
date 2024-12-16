@@ -15,10 +15,10 @@ import AdminOrders from './components/Admin/AdminOrders.jsx';
 import AdminSales from './components/Admin/AdminSales.jsx';
 import CheckoutPage from './components/Customer/CheckoutPage.jsx';
 import './styles/index.css';
-// import './stylesheet.css';
 
 import ProfilePage from './components/Customer/ProfilePage.jsx';
 
+// function to redirect logged-in users from home/signin page
 const checkIfLoggedInOnHome = async () => {
 
   const res = await fetch("http://localhost:3002/checkifloggedin",
@@ -26,21 +26,24 @@ const checkIfLoggedInOnHome = async () => {
       method: "POST",
       credentials: "include" 
     });
-
+  
+  // parse server response
   const payload = await res.json();
   console.log(`checkIfLoggedInHome: isLoggedIn: ${payload.isLoggedIn}, userType: ${payload.userType}`);
   
+  // redirect based on user login status and user type
   if (payload.isLoggedIn) {
     if(payload.userType=== "customer"){
-      return redirect("/customer");
+      return redirect("/customer"); // redirect customers to Customer Homepage/Landing Page
     }else if(payload.userType=== "admin"){
-      return redirect("/admin");
+      return redirect("/admin"); // redirect admin to Admin Dashboard
     }
   } else {
     return 0;
   }
 }
 
+// function to check admin access for admin routes
 const checkIfLoggedInOnDash = async () => {
   const res = await fetch("http://localhost:3002/checkifloggedin",
     {
@@ -51,12 +54,13 @@ const checkIfLoggedInOnDash = async () => {
   const payload = await res.json();
   console.log(`checkIfLoggedInOnDash: isLoggedIn: ${payload.isLoggedIn}, userType: ${payload.userType}`);
     if (payload.isLoggedIn && payload.userType === "admin") {
-      return true;
+      return true; // allow access
     } else {
-      return redirect("/");
+      return redirect("/"); // redicrect unauthorized users to signin page
     }
 }
 
+// functio to check customer acces for customer routes
 const checkIfLoggedInOnCustomerPage = async () => {
   const res = await fetch("http://localhost:3002/checkifloggedin", {
     method: "POST",
@@ -67,27 +71,29 @@ const checkIfLoggedInOnCustomerPage = async () => {
   console.log(`checkIfLoggedInOnCustomerPage: isLoggedIn: ${payload.isLoggedIn}, userType: ${payload.userType}`);
 
   if (payload.isLoggedIn && payload.userType === "customer") {
-    return true;
+    return true; // allow access
   } else {
-    return redirect("/");
+    return redirect("/"); // redicrect unauthorized users to signin page
   }
 }
 
+// define application routes
 const router = createBrowserRouter([
+  // sign in
   { path: '/', element: <SignIn />, loader: checkIfLoggedInOnHome},
+  // sign up
   { path: '/signup', element: <SignUp />, loader: checkIfLoggedInOnHome},
-
+  // customer routes
   { path: '/customer', element: <CustomerRoot />, loader: checkIfLoggedInOnCustomerPage, children:[
     { path: '/customer', element: <CustomerHome />},
-
     { path: '/customer/storepage', element: <StorePage />},
     { path: '/customer/orders', element: <CustomerOrders />},
     { path: '/customer/checkout', element: <CheckoutPage />},
     { path: '/customer/profile', element: <ProfilePage />},
   ]},
+  // admin routes
   { path: '/admin', element: <AdminRoot />, loader: checkIfLoggedInOnDash, children:[
     {path: '/admin', element: <AdminHome />},
-
     {path: '/admin/catalog', element: <AdminCatalog />},
     {path: '/admin/accounts', element: <AdminAccounts />},
     {path: '/admin/orders', element: <AdminOrders />},

@@ -1,4 +1,3 @@
-// import image from '../assets/uplogo.png';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -6,8 +5,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function AdminTitle({title}){
     const navigate = useNavigate();
 
+    // handles back button click event
     const handleBack = () => {
-        navigate(-1); // Navigate to the previous page
+        navigate(-1); // navigate to the previous page
     };
 
     return (
