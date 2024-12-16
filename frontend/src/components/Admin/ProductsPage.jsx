@@ -121,19 +121,19 @@ function ProductsPage({ initialProducts, onSearch }) {
                                 <img src={product.productImage} alt={product.productName} className='w-[120px] h-[120px] object-contain mr-5' />
                                 <div className='product-each-info flex items-center justify-between p-4 w-full'>
                                     <div className='name-price flex flex-col flex-1'>
-                                        <p className='product-name'>{product.productName}</p>
-                                        <p className='product-price'><i className="fas fa-peso-sign" />&nbsp;{product.productPrice}</p>
+                                        <p className='product-name font-extrabold'>{product.productName}</p>
+                                        <p className='product-price text-lime-700 font-semibold'><i className="fas fa-peso-sign" />&nbsp;{product.productPrice}</p>
                                     </div>
                                     <div className='product-desc flex-1 text-center'>
-                                        <p className='product-desc'>Description: {product.productDescription}</p>
+                                        <p className='product-desc text-sm text-gray-600'>Description: {product.productDescription}</p>
                                     </div>
                                     <div className='type-qty flex flex-col items-center flex-1'>
                                         <p className='product-type'>{getProductTypeLabel(product.productType)}</p>
-                                        <p className='product-quantity'>Qty: {product.productQuantity}</p>
+                                        <p className='product-quantity text-sm text-gray-700'>Qty: <b>{product.productQuantity}</b></p>
                                     </div>
-                                    <div className='product-btns flex gap-2'>
-                                        <button className='product-editbtn' onClick={() => handleEdit(product)}><i className="fas fa-pencil-alt" /></button>
-                                        <button className='product-delbtn' onClick={() => handleDelete(product._id)}><i className="fas fa-trash" /></button>
+                                    <div className='product-btns flex gap-4'>
+                                        <button className='product-editbtn text-lime-800 hover:text-lime-500' onClick={() => handleEdit(product)}><i className="fas fa-pencil-alt" /></button>
+                                        <button className='product-delbtn text-lime-800 hover:text-red-500' onClick={() => handleDelete(product._id)}><i className="fas fa-trash" /></button>
                                     </div>
                                 </div>
                             </div>
@@ -146,45 +146,49 @@ function ProductsPage({ initialProducts, onSearch }) {
                     isOpen={isModalOpen}
                     onRequestClose={() => setIsModalOpen(false)}
                     contentLabel="Edit Product"
-                    className="modal"
-                    overlayClassName="modal-overlay"
+                    className="modal bg-white shadow-lg border border-gray-500 p-6 rounded-lg w-96"
+                    overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
                 >
-                    <h2 className='modal-title'>Edit Product</h2>
+                    <h2 className='modal-title text-xl font-extrabold'>Edit Product</h2>
+                    <div className='border border-gray-300 shadow-sm mb-2'></div>
                     <form onSubmit={(e) => { e.preventDefault(); handleUpdate(); }}>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Image</label>
+                        <div className='input-modal flex flex-col mb-2'>
+                            <label className='edit-label text-sm'>Product Image</label>
                             <input
                                 type="text"
                                 name="productImage"
+                                className='bg-green-100 p-1 px-2'
                                 value={formValues.productImage}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Name</label>
+                        <div className='input-modal flex flex-col mb-2'>
+                            <label className='edit-label text-sm'>Product Name</label>
                             <input
                                 type="text"
                                 name="productName"
+                                className='bg-green-100 p-1 px-2'
                                 value={formValues.productName}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Description</label>
+                        <div className='input-modal flex flex-col mb-2'>
+                            <label className='edit-label text-sm'>Product Description</label>
                             <input
                                 type="text"
                                 name="productDescription"
+                                className='bg-green-100 p-1 px-2'
                                 value={formValues.productDescription}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Type</label>
+                        <div className='input-modal flex flex-col mb-2'>
+                            <label className='edit-label text-sm'>Product Type</label>
                             <select
                                 name="productType"
                                 value={formValues.productType}
                                 onChange={handleChange}
-                                className='product-type-dropdown'
+                                className='product-type-dropdown bg-green-100 p-1 px-2 rounded-md border border-gray-400'
                                 required
                             >
                                 {productTypeOptions.map(option => (
@@ -194,27 +198,29 @@ function ProductsPage({ initialProducts, onSearch }) {
                                 ))}
                             </select>
                         </div>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Quantity</label>
+                        <div className='input-modal flex flex-col mb-2'>
+                            <label className='edit-label text-sm'>Product Quantity</label>
                             <input
                                 type="number"
                                 name="productQuantity"
+                                className='bg-green-100 p-1 px-2'
                                 value={formValues.productQuantity}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='input-modal'>
-                            <label className='edit-label'>Product Price</label>
+                        <div className='input-modal flex flex-col mb-5'>
+                            <label className='edit-label text-sm'>Product Price</label>
                             <input
                                 type="number"
                                 name="productPrice"
+                                className='bg-green-100 p-1 px-2'
                                 value={formValues.productPrice}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className='modal-btns'>
-                            <button type="button" className='modal-cancel-btn' onClick={() => setIsModalOpen(false)}>Cancel</button>
-                            <button type="submit" className='modal-update-btn'>Update</button>
+                        <div className='modal-btns flex gap-3'>
+                            <button type="submit" className='modal-update-btn bg-[#5C8B57] p-2 rounded-lg text-white hover:bg-lime-700'>Update</button>
+                            <button type="button" className='modal-cancel-btn bg-red-900 p-2 rounded-lg text-white hover:bg-red-800' onClick={() => setIsModalOpen(false)}>Cancel</button>
                         </div>
                     </form>
                 </Modal>
