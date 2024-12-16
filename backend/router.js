@@ -16,7 +16,7 @@ router.post('/addadmin', addAdmin);
 router.post('/products', createProduct); 
 router.get('/getproducts', getAllProducts);
 router.delete('/products/:id', deleteProduct); // Add delete route
-router.put('/products/:id', updateProduct); // Add update route
+router.post('/products/:id', updateProduct); // Add update route
 router.get('/search', searchProducts);
 // router.get('/products/sort', async (req, res) => {
 //     const { criteria, order } = req.query;
