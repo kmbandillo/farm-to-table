@@ -44,20 +44,20 @@ function AdminAccounts() {
             <AdminTitle title="Manage Accounts" />
             <div className='flex flex-row ml-[5.2%] mt-[1.1%]'>
                 <AdminSearchAcc title="Search account" onSearch={handleSearch} />
-                <p className='totalaccs'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
+                <p className='w-60 ml-[15.5%] bg-white bg-opacity-80 rounded-lg shadow-xl text-base mt-[32px] text-[#31454D] text-center'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
             </div>
-            <div className="overflow-auto max-h-[450px] bg-[rgba(146, 197, 136, 0.8)] rounded-lg shadow-lg mt-5 p-5">
-            <ul className='list-none p-0 m-0'>
+            <div className="overflow-auto bg-[#94B690] max-h-[500px] bg-opacity-85 rounded-lg shadow-xl mt-10 p-10">
+            <ul className='list-none'>
                         {filteredCustomers.length === 0 ? (
-                            <li className = "text-center p-5 text-lg text-gray-600">No customers found </li>
+                            <li className = "text-center p-5 text-lg text-black">No customers found </li>
                         ) : (
                             filteredCustomers.map((customer) => (
-                                <li key={customer._id} className = 'bg-white rounded-lg p-5 my-6 shadow-lg transition-all duration-200 ease-in-out hover:shadow-2xl hover:-translate-y-1'>
-                                    <p class="my-2 text-sm"><strong class="font-bold">First Name:</strong> {customer.firstName}</p>
-                                    <p class="my-2 text-sm"><strong class="font-bold">Middle Name:</strong> {customer.middleName}</p>
-                                    <p class="my-2 text-sm"><strong class="font-bold">Last Name:</strong> {customer.lastName}</p>
-                                    <p class="my-2 text-sm"><strong class="font-bold">Email:</strong> {customer.email}</p>
-                                    <p class="my-2 text-sm"><strong class="font-bold">User type:</strong> {customer.userType}</p>
+                                <li key={customer._id} className = 'bg-white border-white rounded-lg p-5 my-6 shadow-xl transition-all duration-200 ease-in-out hover:shadow-2xl hover:-translate-y-1'>
+                                    <p className="my-2 text-sm"><strong className="font-bold">First Name:</strong> {customer.firstName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Middle Name:</strong> {customer.middleName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Last Name:</strong> {customer.lastName}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">Email:</strong> {customer.email}</p>
+                                    <p className="my-2 text-sm"><strong className="font-bold">User type:</strong> {customer.userType}</p>
                                 </li>
                             ))
                         )}
