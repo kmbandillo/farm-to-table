@@ -28,7 +28,7 @@ function ProductCard({ product, addToCart }) {
       <div className="mt-3">
         <h3 className="text-lg font-semibold text-gray-800 truncate">{productName}</h3>
         <p className="text-sm text-gray-600 mt-1 h-[40px]">{productDescription}</p>
-        <p className="text-sm font-medium text-gray-600 mt-2">Type: {getProductTypeLabel(product.productType)}</p>
+        <p className="text-sm font-medium text-gray-600 mt-2">Type: {getProductTypeLabel(product.productType).slice(0, -4)}</p>
 
         {productQuantity > 0 ? (
           <div className="flex items-center flex-col mt-1">

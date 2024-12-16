@@ -144,7 +144,7 @@ function ProductsPage({ initialProducts, onSearch }) {
                                         <p className='product-desc text-sm text-gray-600'>Description: {product.productDescription}</p>
                                     </div>
                                     <div className='type-qty flex flex-col items-center flex-1'>
-                                        <p className='product-type'>{getProductTypeLabel(product.productType)}</p>
+                                        <p className='product-type'>Type: {getProductTypeLabel(product.productType).slice(0,-4)}</p>
                                         <p className='product-quantity text-sm text-gray-700'>Qty: <b>{product.productQuantity}</b></p>
                                     </div>
                                     <div className='product-btns flex gap-4'>
