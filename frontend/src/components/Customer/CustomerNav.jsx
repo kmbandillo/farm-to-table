@@ -36,11 +36,11 @@ function CustomerNav({title, name, func}){
                     <li><Link to="/customer/orders" className={`${activeLink === 'orders' ? 'text-green-950 font-bold' : 'text-white'} active:font-bold`}>Orders</Link></li>
                     {/* <li><Link to="/customer/about" className={activeLink === 'about' ? 'active' : ''}>ABOUT</Link></li> */}
                 </ul>
-                 <ul className="flex ml-[160px] w-[10%]">
+                 <ul className="flex ml-[160px] w-[15%]">
                     <li className='customer-nav-name m-auto mr-1'>{name}</li>
                     <li>
                         <Link to="/customer/profile">
-                            <img src={profile} className="customer-nav-profile mt-3" alt="Profile" />
+                            <img src={profile} className="customer-nav-profile size-[50px] mt-1" alt="Profile" />
                         </Link>
                     </li>
                     <button><li className='m-auto ml-1 p-3' onClick={func}><i className="fas fa-sign-out-alt hover:text-white"></i></li></button>

@@ -106,7 +106,6 @@ function StorePage() {
 
   return (
     <div className="app">
-
       <div
         className="bg-cover bg-center bg-no-repeat h-screen"
         style={{
@@ -157,7 +156,6 @@ function StorePage() {
         </div>
 
         {/* Shopping Cart */}
-        {isCartVisible && (
           <div className="w-[30%] bg-lime-100 p-5">
             <ShoppingCart
               cart={cart}
@@ -165,7 +163,6 @@ function StorePage() {
               updateItemQuantity={updateItemQuantity}
             />
           </div>
-        )}
       </div>
       <Footer />
     </div>

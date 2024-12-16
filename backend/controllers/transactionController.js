@@ -141,6 +141,7 @@ const cancelOrder = async (req, res) => {
   try {
     const { orderId } = req.params;
 
+    // Find the order
     const cancelledTransaction = await Transaction.findById(orderId);
 
     if (!cancelledTransaction) {
@@ -155,19 +156,27 @@ const cancelOrder = async (req, res) => {
       );
     }
 
-    // Delete the cancelled order
-    const deletedOrder = await Transaction.findByIdAndDelete(orderId);
+    // Option 1: Update the order status instead of deleting it
+    const updatedTransaction = await Transaction.findByIdAndUpdate(
+      orderId,
+      { status: 2 }, // Set status to 2 (Cancelled)
+      { new: true } // Return the updated document
+    );
 
-    if (!deletedOrder) {
-      return res.status(404).send({ success: false, message: 'Order not found' });
-    }
+    // Option 2: If you still want to delete the order
+    // const deletedOrder = await Transaction.findByIdAndDelete(orderId);
 
-    res.send({ success: true });
+    res.send({
+      success: true,
+      message: 'Order successfully cancelled',
+      order: updatedTransaction, // Provide updated order details (optional)
+    });
   } catch (error) {
     console.error('Error cancelling order:', error);
     res.status(500).send({ success: false, error: error.message });
   }
 };
+
 
 // transactionController.js
 

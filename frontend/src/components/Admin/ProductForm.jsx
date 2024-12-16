@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const productTypeOptions = [
-    { value: 1, label: 'Staple' },
-    { value: 2, label: 'Fruits and Vegetables' },
-    { value: 3, label: 'Livestock' },
-    { value: 4, label: 'Seafood' },
-    { value: 5, label: 'Others' },
+    { value: 1, label: 'Crops' },
+    { value: 2, label: 'Poultry' },
 ];
 
 function ProductForm({ closeModal, setProducts }) {
