@@ -38,7 +38,7 @@ router.get('/pending-transactions', getPendingTransactions);
 router.post('/update-transaction-status', updateTransactionStatus);
 router.post('/cancel-transaction', cancelTransaction);
 router.get('/customer-orders/:userId', getCustomerOrders);
-router.delete('/cancel-order/:orderId', cancelOrder);
+router.post('/cancel-order/:orderId', cancelOrder);
 router.get('/total-counts', getTotalCounts);
 router.get('/total-prices', getTotalPrices);
 

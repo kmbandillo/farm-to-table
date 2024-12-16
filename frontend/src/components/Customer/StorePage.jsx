@@ -157,7 +157,6 @@ function StorePage() {
         </div>
 
         {/* Shopping Cart */}
-        {isCartVisible && (
           <div className="w-[30%] bg-lime-100 p-5">
             <ShoppingCart
               cart={cart}
@@ -165,7 +164,6 @@ function StorePage() {
               updateItemQuantity={updateItemQuantity}
             />
           </div>
-        )}
       </div>
       <Footer />
     </div>

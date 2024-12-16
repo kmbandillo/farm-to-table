@@ -7,11 +7,8 @@ function ProductCard({ product, addToCart }) {
   };
 
   const productTypeOptions = [
-    { value: 1, label: 'Staple' },
-    { value: 2, label: 'Fruits/Vegetables' },
-    { value: 3, label: 'Livestock' },
-    { value: 4, label: 'Seafood' },
-    { value: 5, label: 'Others' },
+    { value: 1, label: 'Crops' },
+    { value: 2, label: 'Poultry' },
   ];
 
   const getProductTypeLabel = (type) => {
@@ -30,12 +27,12 @@ function ProductCard({ product, addToCart }) {
       />
       <div className="mt-3">
         <h3 className="text-lg font-semibold text-gray-800 truncate">{productName}</h3>
-        <p className="text-sm text-gray-600 mt-1 truncate">{productDescription}</p>
-        <p className="text-sm font-medium text-gray-600">Type: {getProductTypeLabel(product.productType)}</p>
+        <p className="text-sm text-gray-600 mt-1 h-[40px]">{productDescription}</p>
+        <p className="text-sm font-medium text-gray-600 mt-2">Type: {getProductTypeLabel(product.productType)}</p>
 
         {productQuantity > 0 ? (
-          <div className="flex items-center flex-col mt-4">
-            <div className="price-qty my-3 flex items-center justify-between w-[100%]">
+          <div className="flex items-center flex-col mt-1">
+            <div className="price-qty my-1 flex items-center justify-between w-[100%]">
               <p className="text-lg font-bold text-green-600">
                 <i className="fas fa-peso-sign" /> {productPrice.toFixed(2)}
               </p>
