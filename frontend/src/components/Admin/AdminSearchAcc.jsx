@@ -4,10 +4,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 function AdminSearchAcc({ title, onSearch }) {
     const [searchQuery, setSearchQuery] = useState('');
 
+    // function to handle changes in the search input field
     const handleChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        onSearch(query); // Pass the search query to the parent component
+        onSearch(query); // pass the search query to the parent component
     };
 
     return (

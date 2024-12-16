@@ -4,23 +4,27 @@ import AdminSearchAcc from './AdminSearchAcc';
 import Footer from '../Footer';
 import backgroundImage from '../../assets/adminbg.png';
 
+// AdminAccounts: component that displays and manages customer accounts
 function AdminAccounts() {
-    const [customers, setCustomers] = useState([]);
-    const [filteredCustomers, setFilteredCustomers] = useState([]);
+    const [customers, setCustomers] = useState([]); // holds all customer data
+    const [filteredCustomers, setFilteredCustomers] = useState([]); // filtered customer data
 
+    // fetch customers data when component is mounted
     useEffect(() => {
         fetchCustomers();
     }, []);
 
+    // function to fetch customers from the server
     function fetchCustomers() {
-        fetch('http://localhost:3002/getcustomers')
-            .then(response => response.json())
+        fetch('http://localhost:3002/getcustomers') // API endpoint to get customer data
+            .then(response => response.json()) // parse as JSON
             .then(body => {
-                setCustomers(body);
-                setFilteredCustomers(body); // Initialize filtered customers with all customers
+                setCustomers(body); // update state will all customers
+                setFilteredCustomers(body); // initialize filtered customers with all customers
             });
     }
 
+    // function to handle search and filter customers (based on first name, middle, last, or email)
     const handleSearch = (searchQuery) => {
         const filtered = customers.filter(customer =>
             customer.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -31,6 +35,7 @@ function AdminAccounts() {
         setFilteredCustomers(filtered);
     };
 
+    // UI component
     return (
         <>
         {/* <div className='relative z-10 bg-none max-w-screen-x1 mx-auto p-20 items-center min-h-screen overflow-auto'>  */}

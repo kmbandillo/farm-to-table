@@ -6,13 +6,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function AdminSales() {
-    const [orders, setOrders] = useState([]); // Raw data fetched from API
+    const [orders, setOrders] = useState([]); // raw data fetched from API
     const [mergedOrders, setMergedOrders] = useState([]);
-    const [totalSales, setTotalSales] = useState(0);
-    const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - 30))); // Default: 30 days ago
-    const [endDate, setEndDate] = useState(new Date()); // Default: Today
-    const [viewType, setViewType] = useState('weekly'); // Default view is weekly
+    const [totalSales, setTotalSales] = useState(0); // total sales value
+    const [startDate, setStartDate] = useState(new Date(new Date().setDate(new Date().getDate() - 30))); // default is 30 days ago
+    const [endDate, setEndDate] = useState(new Date()); // default is date today
+    const [viewType, setViewType] = useState('weekly'); // default view is weekly
 
+    // fetch orders
     useEffect(() => {
         const fetchCompletedOrders = async () => {
             try {
@@ -26,8 +27,9 @@ function AdminSales() {
         };
 
         fetchCompletedOrders();
-    }, []); // Fetch data only once when the component loads
+    }, []); // fetch data only once when the component loads
 
+    // filter and merge data based on selected date range
     useEffect(() => {
         const filterAndMergeData = () => {
             const filteredData = filterDataByDateRange(orders, startDate, endDate);
@@ -61,6 +63,7 @@ function AdminSales() {
         filterAndMergeData();
     }, [orders, startDate, endDate]); // Re-run filtering when orders or date range changes
 
+    // filter data within date range
     const filterDataByDateRange = (data, start, end) => {
         return data.filter(order => {
             const orderDate = new Date(order.date);
@@ -68,14 +71,14 @@ function AdminSales() {
         });
     };
 
-    // Function to get all weekly ranges within a given date range
+    // function to get all weekly ranges within a given date range
     const getWeeklyRanges = (start, end) => {
         const weeks = [];
         let currentStart = new Date(start);
         let currentEnd = new Date(currentStart);
         currentEnd.setDate(currentStart.getDate() + 6); // Week end is 6 days after start
 
-        // Iterate through the date range
+        // iterate through the date range
         while (currentStart <= end) {
             weeks.push({
                 start: new Date(currentStart),
@@ -89,14 +92,14 @@ function AdminSales() {
         return weeks;
     };
 
-    // Function to get all months within a given date range
+    // function to get all months within a given date range
     const getMonthlyRanges = (start, end) => {
         const months = [];
         const currentStart = new Date(start);
         const currentEnd = new Date(currentStart);
         currentEnd.setMonth(currentStart.getMonth() + 1); // Move to next month
 
-        // Iterate through the date range
+        // iterate through the date range
         while (currentStart <= end) {
             months.push({
                 start: new Date(currentStart),
@@ -110,14 +113,14 @@ function AdminSales() {
         return months;
     };
 
-    // Function to get all years within a given date range
+    // function to get all years within a given date range
     const getYearlyRanges = (start, end) => {
         const years = [];
         let currentStart = new Date(start);
         let currentEnd = new Date(currentStart);
         currentEnd.setFullYear(currentStart.getFullYear() + 1); // Next year
 
-        // Iterate through the date range
+        // iterate through the date range
         while (currentStart <= end) {
             years.push({
                 start: new Date(currentStart),
@@ -131,7 +134,7 @@ function AdminSales() {
         return years;
     };
 
-    // Group data by week
+    // group data by week
     const groupDataByWeek = (data, weeks) => {
         return weeks.map(week => {
             const weekStart = week.start.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -150,7 +153,7 @@ function AdminSales() {
         });
     };
 
-    // Group data by month
+    // group data by month
     const groupDataByMonth = (data, months) => {
         return months.map(month => {
             const monthStart = month.start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
@@ -170,7 +173,7 @@ function AdminSales() {
         });
     };
 
-    // Group data by year
+    // group data by year
     const groupDataByYear = (data, years) => {
         return years.map(year => {
             const yearStart = year.start.getFullYear();
@@ -189,7 +192,7 @@ function AdminSales() {
         });
     };
 
-    // Render the grouped data based on view type
+    // render the grouped data based on view type
     const renderGroupedData = () => {
         let groupedData = [];
         let dateLabel = "";
@@ -244,6 +247,7 @@ function AdminSales() {
         ));
     };
 
+    // UI component
     return (
         <div>
             <AdminTitle title="Admin Sales" />

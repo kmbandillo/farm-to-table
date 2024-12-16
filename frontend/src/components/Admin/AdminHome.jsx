@@ -1,38 +1,40 @@
-import image from '../../assets/indicator.png';
 import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Footer from '../Footer';
 
+// AdminHome: component to display admin dashboard
 function AdminHome() {
+  // states for totals and stats
   const [confirmedTotalPrice, setConfirmedTotalPrice] = useState(0);
   const [pendingTotalPrice, setPendingTotalPrice] = useState(0);
   const [totals, setTotals] = useState({ confirmedCount: 0, pendingCount: 0 });
   const today = new Date();
-  const pending_orders = 3;
-  // Format the day of the week in English
+  // format the day of the week in english
   const dayOptions = { weekday: 'long' };
   const day = today.toLocaleDateString('en-US', dayOptions);
-
-  // Format the rest of the date in Filipino
+  // format the rest of the date in filipino
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = today.toLocaleDateString('en-US', dateOptions);
 
   const [customers, setCustomers] = useState([]);
 
+  // fetch data when component is mounted
   useEffect(() => {
-    fetchCustomers();
-    fetchTotals();
-    fetchTotalPrices();
+    fetchCustomers(); // fetch customer accounts
+    fetchTotals(); // fetch total counts for confirmed/pending orders
+    fetchTotalPrices(); // fetch confirmed/pending total prices
   }, []);
 
+  // fetch list of customers
   function fetchCustomers() {
     fetch('http://localhost:3002/getcustomers')
       .then(response => response.json())
       .then(body => {
-          setCustomers(body);
+          setCustomers(body); // update customers state
       });
   }
 
+  // fetch counts for confirmed and pending orders
   function fetchTotals() {
     fetch('http://localhost:3002/total-counts')
       .then(response => response.json())
@@ -44,6 +46,7 @@ function AdminHome() {
       });
   }
 
+  // fetch total prices for confirmed and pending orders
   const fetchTotalPrices = async () => {
     try {
       const response = await fetch('http://localhost:3002/total-prices');
@@ -55,6 +58,7 @@ function AdminHome() {
     }
   };
 
+  // UI component
   return (
     <>
     <div className='adminhome-container'>

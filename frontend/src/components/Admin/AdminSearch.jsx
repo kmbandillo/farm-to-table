@@ -3,34 +3,40 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Modal from 'react-modal';
 import ProductForm from './ProductForm';
 
-Modal.setAppElement('#root'); // Set the root element for accessibility
+Modal.setAppElement('#root'); // set the root element for accessibility
 
 function AdminSearch({ title, onSearch, onSortChange, setProducts }) {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState(''); // hold the search query typed by user
+    const [isModalOpen, setIsModalOpen] = useState(false); // manage visibility of the modal
 
+    // function to handle search input change and update search query
     const handleChange = (e) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-        onSearch(query); // Pass the search query to the parent component
+        const query = e.target.value; // get value from input field
+        setSearchQuery(query); // update local search query state
+        onSearch(query); // pass the search query to the parent component
     };
 
+    // function to handle sorting criteria change
     const handleSortCriteriaChange = (e) => {
         onSortChange(e.target.value, 'criteria');
     };
 
+    // function to handle sorting order change
     const handleSortOrderChange = (e) => {
         onSortChange(e.target.value, 'order');
     };
 
+    // function to open modal
     const openModal = () => {
-        setIsModalOpen(true);
+        setIsModalOpen(true); // set modal state to open
     };
 
+    // function to close modal
     const closeModal = () => {
-        setIsModalOpen(false);
+        setIsModalOpen(false); // set modal state to closed
     };
 
+    // UI component
     return (
         <>
         <div className='adminsearch-topcontainer flex items-center justify-between'>

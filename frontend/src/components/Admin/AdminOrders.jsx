@@ -2,23 +2,27 @@ import React, { useEffect, useState } from 'react';
 import AdminTitle from './AdminTitle';
 import Footer from '../Footer';
 
+// AdminOrders: component for managing pending order requests
 function AdminOrders() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]); // store pending orders
 
+  // fetch pending orders
   useEffect(() => {
     fetchPendingOrders();
   }, []);
 
+  // fetch all pending transactions from the server
   const fetchPendingOrders = async () => {
     try {
       const response = await fetch('http://localhost:3002/pending-transactions');
       const data = await response.json();
-      setOrders(data);
+      setOrders(data); // update state with fetched orders
     } catch (error) {
       console.error('Error fetching pending orders:', error);
     }
   };
 
+  // marks order as approved
   const confirmOrder = async (transactionId) => {
     try {
       const response = await fetch('http://localhost:3002/update-transaction-status', {
@@ -32,7 +36,7 @@ function AdminOrders() {
 
       if (result.success) {
         alert('Order confirmed successfully');
-        fetchPendingOrders(); // Refresh the orders list
+        fetchPendingOrders(); // refresh the orders list
       } else {
         alert('Failed to confirm order');
       }
@@ -41,6 +45,7 @@ function AdminOrders() {
     }
   };
 
+  // marks order as declined
   const cancelOrder = async (transactionId) => {
     try {
       const response = await fetch('http://localhost:3002/cancel-transaction', {
@@ -54,7 +59,7 @@ function AdminOrders() {
 
       if (result.success) {
         alert('Order cancelled successfully');
-        fetchPendingOrders(); // Refresh the orders list
+        fetchPendingOrders(); // refresh the orders list
       } else {
         alert('Failed to cancel order');
       }
@@ -63,6 +68,7 @@ function AdminOrders() {
     }
   };
 
+    // order status codes
     function getStatusText(status) {
         switch(status) {
             case 0:
@@ -76,6 +82,7 @@ function AdminOrders() {
         }
     }
 
+    // UI component
     return (
     <div>
       <div className='p-5'>
