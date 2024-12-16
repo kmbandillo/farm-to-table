@@ -70,7 +70,7 @@ function ProductsPage({ initialProducts, onSearch }) {
     const handleUpdate = async () => {
         try {
             const response = await fetch(`http://localhost:3002/products/${editProduct}`, {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },

@@ -55,7 +55,7 @@ function CustomerOrders() {
   return (
     <>
       <div className="customer-orders">
-      <div className='bg-green-200'>
+      <div className='bg-green-200 m-5'>
         <AdminTitle title="My Orders" />
       </div>
         <div className="customer-orders-container p-5">
