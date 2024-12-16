@@ -11,14 +11,14 @@ function AdminTitle({title}){
     };
 
     return (
-        <>
+        <div className='bg-green-200'>
         <div className='py-5 px-8'>
             <div className='flex justify-between'>
                 <h2 className='text-xl font-extrabold'>{title}</h2>
                 <button onClick={handleBack} className='backbutton'><i id='backbtn-icon' className="fas fa-chevron-left" /> Back</button>
             </div>
         </div>
-        </>
+        </div>
     );
 }
 
