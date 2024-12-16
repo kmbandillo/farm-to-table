@@ -72,14 +72,18 @@ function CheckoutPage() {
           ) : (
             cart.map(item => (
               <div key={item._id} className="flex bg-white outline outline-1 outline-gray-200 mb-5 p-5 rounded-lg shadow-lg">
-                <img src={item.productImage} alt={item.productName} width="100" height="50" className='checkout-image'/>
-                <div className='mx-10 my-auto'>
-                  <h3 className='text-xl font-bold'>{item.productName}</h3>
-                  <p className='text-sm'>Quantity: <b>{item.quantity}</b></p>
-                </div>
-                <div className='my-auto ml-[60%]'>
-                  <p className='text-gray-500 text-sm'>Price: <i className="fas fa-peso-sign" /> <b>{item.productPrice}</b></p>
-                  <p>Total: <i className="fas fa-peso-sign" /> <b>{item.productPrice * item.quantity}</b></p>
+                <div className='flex items-center justify-between p-4 w-full'>
+                  <div className='mr-10'>
+                    <img src={item.productImage} alt={item.productName} width="100" height="50" className='checkout-image'/>
+                  </div>
+                  <div className='flex flex-col flex-1 text-left'>
+                    <h3 className='text-xl font-bold'>{item.productName}</h3>
+                    <p className='text-sm'>Quantity: <b>{item.quantity}</b></p>
+                  </div>
+                  <div className='flex flex-col flex-1 text-right'>
+                    <p className='text-gray-500 text-sm'>Price: <i className="fas fa-peso-sign" /> <b>{item.productPrice}</b></p>
+                    <p>Total: <i className="fas fa-peso-sign" /> <b>{item.productPrice * item.quantity}</b></p>
+                  </div>
                 </div>
               </div>
             ))

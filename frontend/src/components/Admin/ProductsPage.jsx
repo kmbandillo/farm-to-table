@@ -113,29 +113,33 @@ function ProductsPage({ initialProducts, onSearch }) {
 
     return (
         <div>
-            <div className='product-container'>
-                {filteredProducts.map(product => (
-                    <div key={product._id}>
-                        <div className='product-each'>
-                            <img src={product.productImage} alt={product.productName} />
-                            <div className='product-each-info'>
-                                <div className='name-price'>
-                                    <p className='product-name'>{product.productName}</p>
-                                    <p className='product-price'><i className="fas fa-peso-sign" />&nbsp;{product.productPrice}</p>
-                                </div>
-                                <p className='product-desc'>Description: {product.productDescription}</p>
-                                <div className='type-qty'>
-                                    <p className='product-type'>{getProductTypeLabel(product.productType)}</p>
-                                    <p className='product-quantity'>Qty: {product.productQuantity}</p>
-                                </div>
-                                <div className='product-btns'>
-                                    <button className='product-editbtn' onClick={() => handleEdit(product)}><i className="fas fa-pencil-alt" /></button>
-                                    <button className='product-delbtn' onClick={() => handleDelete(product._id)}><i className="fas fa-trash" /></button>
+            <div>
+                <div className='p-5'>
+                    {filteredProducts.map(product => (
+                        <div key={product._id}>
+                            <div className='w-full p-5 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden mb-5 flex'>
+                                <img src={product.productImage} alt={product.productName} className='w-[120px] h-[120px] object-contain mr-5' />
+                                <div className='product-each-info flex items-center justify-between p-4 w-full'>
+                                    <div className='name-price flex flex-col flex-1'>
+                                        <p className='product-name'>{product.productName}</p>
+                                        <p className='product-price'><i className="fas fa-peso-sign" />&nbsp;{product.productPrice}</p>
+                                    </div>
+                                    <div className='product-desc flex-1 text-center'>
+                                        <p className='product-desc'>Description: {product.productDescription}</p>
+                                    </div>
+                                    <div className='type-qty flex flex-col items-center flex-1'>
+                                        <p className='product-type'>{getProductTypeLabel(product.productType)}</p>
+                                        <p className='product-quantity'>Qty: {product.productQuantity}</p>
+                                    </div>
+                                    <div className='product-btns flex gap-2'>
+                                        <button className='product-editbtn' onClick={() => handleEdit(product)}><i className="fas fa-pencil-alt" /></button>
+                                        <button className='product-delbtn' onClick={() => handleDelete(product._id)}><i className="fas fa-trash" /></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
             {isModalOpen && (
                 <Modal
