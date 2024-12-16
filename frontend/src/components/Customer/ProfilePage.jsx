@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProfilePage.css'; 
-import image from '../../assets/aliceguo.png';
+import image from '../../assets/pictureprofile.png';
+import backgroundImage from '../../assets/mainbg.jpg';
 
 function ProfilePage({ initialUser }) {
     const [user, setUser] = useState(initialUser || {});
@@ -120,6 +121,9 @@ function ProfilePage({ initialUser }) {
 
     return (
         <>
+        <div className = "background">
+            <img src = {backgroundImage} className = 'backdrop'/>
+            </div>
         <div className="profile-container"> 
             <div className='content'>
                 <div className='profile-cont'>
@@ -218,6 +222,7 @@ function ProfilePage({ initialUser }) {
                 </div>
             </div>
         </div>
+    
         </>
     );
 }

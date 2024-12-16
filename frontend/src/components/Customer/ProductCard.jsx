@@ -9,9 +9,6 @@ function ProductCard({ product, addToCart }) {
   const productTypeOptions = [
     { value: 1, label: 'Staple' },
     { value: 2, label: 'Fruits/Vegetables' },
-    { value: 3, label: 'Livestock' },
-    { value: 4, label: 'Seafood' },
-    { value: 5, label: 'Others' },
   ];
 
   const getProductTypeLabel = (type) => {
