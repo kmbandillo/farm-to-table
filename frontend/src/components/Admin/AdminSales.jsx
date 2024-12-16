@@ -211,7 +211,7 @@ function AdminSales() {
         }
 
         return groupedData.map((range, index) => (
-            <div key={index} className="flex flex-col">
+            <div key={index} className="flex flex-col bg-green-100 p-3 rounded-lg">
                 <div className="-m-1.5 overflow-x-auto">
                     <div className="p-1.5 min-w-full inline-block align-middle">
                         <div className="overflow-hidden">
@@ -228,14 +228,14 @@ function AdminSales() {
                                     {range.orders.length > 0 ? (
                                         range.orders.map(order => (
                                             <tr key={order.productId}>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{order.productName}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{order.quantity}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{(order.totalSales).toFixed(2)}</td>
+                                                <td className="px-8 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-black-200">{order.productName}</td>
+                                                <td className="px-8 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-black-200">{order.quantity}</td>
+                                                <td className="px-8 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-black-200">{(order.totalSales).toFixed(2)}</td>
                                             </tr>
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="4" className="px-6 py-4 text-center text-sm font-medium text-gray-800 dark:text-neutral-200">No transactions</td>
+                                            <td colSpan="4" className="px-6 py-4 text-center text-sm font-medium text-gray-800 dark:text-black-200">No transactions</td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -250,41 +250,45 @@ function AdminSales() {
     // UI component
     return (
         <div>
-            <AdminTitle title="Admin Sales" />
-            <div className="flex flex-col space-y-4">
-                <div className="flex items-center space-x-2">
-                    <label className="text-xs">View By: </label>
-                    <select value={viewType} onChange={(e) => setViewType(e.target.value)} className="p-2 border rounded">
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
-                    </select>
+            <div className='p-5 pb-0'>
+               <AdminTitle title="Admin Sales" /> 
+            </div>
+            <div className='m-5 bg-green-200 p-5'>
+                <div className='flex w-full items-center justify-between'>
+                    <div className="flex items-center space-x-2">
+                        <label className="text-xs">View By: </label>
+                        <select value={viewType} onChange={(e) => setViewType(e.target.value)} className="p-2 border rounded">
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                    <div className="date-picker">
+                        <label className='text-xs'>Select Date Range: </label>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            selectsStart
+                            startDate={startDate}
+                            endDate={endDate}
+                            dateFormat="yyyy-MM-dd"
+                            className='bg-white rounded-md border border-gray-300 mr-2 p-1'
+                        />
+                        <DatePicker
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            selectsEnd
+                            startDate={startDate}
+                            endDate={endDate}
+                            dateFormat="yyyy-MM-dd"
+                            className='bg-white rounded-md border border-gray-300 p-1'
+                        />
                 </div>
-
-                <div className="date-picker">
-                    <label>Select Date Range: </label>
-                    <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        dateFormat="yyyy-MM-dd"
-                    />
-                    <DatePicker
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        dateFormat="yyyy-MM-dd"
-                    />
-                </div>
-
-                <div className="total-sales">
-                    <h3>Total Sales: <i className="fas fa-peso-sign" />{totalSales.toFixed(2)}</h3>
-                </div>
-
+            </div>
+            <div className='w-full border border-neutral-500 shadow-lg mt-5'></div>
+            <div className="total-sales bg-white border border-gray-300 w-fit p-2 rounded-lg my-4">
+                <h3><b>Total Sales:</b> <i className="fas fa-peso-sign" />{totalSales.toFixed(2)}</h3>
+            </div>
                 {renderGroupedData()}
             </div>
             <Footer />
