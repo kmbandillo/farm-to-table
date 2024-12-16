@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminTitle from './AdminTitle';
 import AdminSearchAcc from './AdminSearchAcc';
 import Footer from '../Footer';
+import backgroundImage from '../../assets/adminbg.png';
+import '../../stylesheet.css'
 
 function AdminAccounts() {
     const [customers, setCustomers] = useState([]);
@@ -36,38 +38,23 @@ function AdminAccounts() {
             <AdminTitle title="Manage Accounts" />
             <div className='adminaccs-top'>
                 <AdminSearchAcc title="Search account" onSearch={handleSearch} />
-                <p className='totalaccs'>Total Customer Accounts: <b>{filteredCustomers.length}</b></p>
+                <p className='totalaccs'>Total Customer Accounts: <strong>{filteredCustomers.length}</strong></p>
             </div>
-            <div className='table-container'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Usertype</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <ul className='account-container'>
                         {filteredCustomers.length === 0 ? (
-                            <tr>
-                                <td colSpan="4">No customers found</td>
-                            </tr>
+                            <li className = "no-customers">No customers found </li>
                         ) : (
                             filteredCustomers.map((customer) => (
-                                <tr key={customer._id}>
-                                    <td>{customer.firstName}</td>
-                                    <td>{customer.middleName}</td>
-                                    <td>{customer.lastName}</td>
-                                    <td>{customer.email}</td>
-                                    <td>{customer.userType}</td>
-                                </tr>
+                                <li key={customer._id} className = 'customer-accounts'>
+                                    <p><strong>First Name:</strong> {customer.firstName}</p>
+                                    <p><strong>Middle Name:</strong> {customer.middleName}</p>
+                                    <p><strong>Last Name:</strong> {customer.lastName}</p>
+                                    <p><strong>Email:</strong> {customer.email}</p>
+                                    <p><strong>User type:</strong> {customer.userType}</p>
+                                </li>
                             ))
                         )}
-                    </tbody>
-                </table>
-            </div>
+            </ul>
         </div>
         <Footer />
         </>
