@@ -205,7 +205,8 @@ function ProfilePage({ initialUser }) {
                     </form>
                 )}
                 <div className='transaction-cont'>
-                    <h3>Transactions</h3>
+                    <h3 className='text-xl font-extrabold'>Transactions</h3>
+                    <div className='border border-black/30 h-[1px] w-full mb-3'></div>
                     {transactions.length > 0 ? (
                         <ul>
                             {transactions.map((transaction) => (
@@ -213,6 +214,7 @@ function ProfilePage({ initialUser }) {
                                     <p><strong>Order ID:</strong> {transaction._id}</p>
                                     <p><strong>Products Purchased:</strong> {formatProducts(transaction.products)}</p>
                                     <p><strong>Date and Time:</strong> {`${new Date(transaction.date).toLocaleDateString()} at ${transaction.time}`}</p>
+                                    <div className='border border-black/30 h-[1px] w-full mb-3 mt-3'></div>
                                 </li>
                             ))}
                         </ul>
